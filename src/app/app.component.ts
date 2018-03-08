@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CreateIssuePage } from '../pages/create-issue/create-issue';
+import { IssueListPage } from '../pages/issue-list/issue-list';
+import { IssueMapPage } from '../pages/issue-map/issue-map';
+import { IssueDetailsPage } from '../pages/issue-details/issue-details';
+import { LoginPage } from '../pages/login/login';
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +18,31 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(private auth: AuthProvider,
+    platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen) {
+
+      this.auth.isAuthenticated().subscribe(authenticated => {
+       if (authenticated) {
+         this.rootPage = HomePage;
+       } else {
+         this.rootPage = LoginPage;
+       }
+     });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'IssueMap', component: IssueMapPage },
+      { title: 'IssueList', component: IssueListPage },
+      { title: 'CreateIssue', component: CreateIssuePage },
+      { title: 'IssueDetails', component: IssueDetailsPage }
     ];
 
   }
@@ -40,5 +60,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logOut() {
+    this.auth.logOut();
   }
 }

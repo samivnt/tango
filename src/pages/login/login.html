@@ -1,0 +1,56 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (submit)='onSubmit($event)'>
+    <ion-list>
+
+      <!-- Name input -->
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type='text' name='name'
+                   #nameInput='ngModel' [(ngModel)]='authRequest.name' required></ion-input>
+      </ion-item>
+
+      <!-- Error message displayed if the name is invalid -->
+      <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+        <p ion-text color='danger'>Name is required.</p>
+      </ion-item>
+
+      <!-- Password input -->
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type='password' name='password'
+                   #passwordInput='ngModel' [(ngModel)]='authRequest.password' required></ion-input>
+      </ion-item>
+
+      <!-- Error message displayed if the password is invalid -->
+      <ion-item *ngIf='passwordInput.invalid && passwordInput.dirty' no-lines>
+        <p ion-text color='danger'>Password is required.</p>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+
+      <!-- Submit button -->
+      <button type='submit' [disabled]='form.invalid' ion-button block>Log in</button>
+
+      <!-- Error message displayed if the login failed -->
+      <p *ngIf='loginError' ion-text color='danger'>Name or password is invalid.</p>
+
+    </div>
+  </form>
+</ion-content>
