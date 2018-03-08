@@ -33,3 +33,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+src/app/config.*
+!src/app/config.sample.ts

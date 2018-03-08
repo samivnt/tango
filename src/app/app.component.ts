@@ -11,6 +11,8 @@ import { IssueMapPage } from '../pages/issue-map/issue-map';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
+import { HttpClient } from '@angular/common/http';
+import { config } from '../app/config';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,6 +25,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(private auth: AuthProvider,
+    public http: HttpClient,
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen) {
@@ -60,6 +63,16 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CreateIssuePage');
+
+    // TODO: replace the hardcoded API URL by the one from the configuration.
+    const url = `${config.apiUrl}/issueTypes`;
+    this.httpClient.get(url).subscribe(issueTypes => {
+      console.log('Issue types loaded', issueTypes);
+    });
   }
 
   logOut() {

@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 import { AuthRequest } from '../../models/auth-request';
 import { AuthResponse } from '../../models/auth-response';
 import { User } from '../../models/user';
-
+import { config } from '../../app/config';
 /**
  * Authentication service for login/logout.
  */
@@ -43,19 +43,17 @@ export class AuthProvider {
   }
 
   logIn(authRequest: AuthRequest): Observable<User> {
-
-    const authUrl = 'https://comem-citizen-engagement.herokuapp.com/api/auth';
-    return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
-      // TODO: delay the observable stream while persisting the authentication response.
-      delayWhen(auth => {
-        return this.saveAuth(auth);
-      }),
-      map(auth => {
-        this.authSource.next(auth);
-        console.log(`User ${auth.user.name} logged in`);
-        return auth.user;
-      })
-    );
+    const authUrl = `${config.apiUrl}/auth`;
+      return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
+        delayWhen(auth => {
+          return this.saveAuth(auth);
+        }),
+        map(auth => {
+          this.authSource.next(auth);
+          console.log(`User ${auth.user.name} logged in`);
+          return auth.user;
+        })
+      );
   }
 
   private saveAuth(auth: AuthResponse): Observable<void> {
