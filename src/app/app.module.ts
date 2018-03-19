@@ -20,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AuthInterceptorProvider } from '../providers/auth-interceptor/auth-interceptor';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    Geolocation,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true },
-    Geolocation
+    Camera
   ]
 })
 export class AppModule {}

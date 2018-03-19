@@ -1,5 +1,5 @@
 A faire (tuto) :
-- Installer (Camera, Geoloc, Maps) : https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/ionic-extras/?home=MediaComem%2Fcomem-appmob%23readme#1
+- Installer (Camera, Geoloc) : https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/ionic-extras/?home=MediaComem%2Fcomem-appmob%23readme#1
 - Installer Image Upoad : https://github.com/MediaComem/comem-appmob/blob/master/IMAGE-UPLOAD.md
 
 A faire :
@@ -13,4 +13,4 @@ A faire :
 - coder
 - coder
 - coder
-- commenter 
+- commenter

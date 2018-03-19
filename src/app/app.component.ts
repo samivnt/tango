@@ -26,9 +26,9 @@ export class MyApp {
 
   constructor(private auth: AuthProvider,
     public httpClient: HttpClient,
-    platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen) {
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen) {
 
       this.auth.isAuthenticated().subscribe(authenticated => {
        if (authenticated) {
