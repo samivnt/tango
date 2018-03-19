@@ -18,6 +18,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { AuthInterceptorProvider } from '../providers/auth-interceptor/auth-interceptor';
+import { Geolocation } from '@ionic-native/geolocation';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { AuthInterceptorProvider } from '../providers/auth-interceptor/auth-inte
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    LeafletModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +55,8 @@ import { AuthInterceptorProvider } from '../providers/auth-interceptor/auth-inte
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true },
+    Geolocation
   ]
 })
 export class AppModule {}

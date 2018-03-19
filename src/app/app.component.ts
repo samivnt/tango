@@ -25,7 +25,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(private auth: AuthProvider,
-    public http: HttpClient,
+    public httpClient: HttpClient,
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen) {
