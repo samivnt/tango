@@ -10,6 +10,7 @@ import { IssueListPage } from '../pages/issue-list/issue-list';
 import { IssueMapPage } from '../pages/issue-map/issue-map';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,7 +33,8 @@ import { PictureProvider } from '../providers/picture/picture';
     IssueListPage,
     IssueMapPage,
     IssueDetailsPage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { PictureProvider } from '../providers/picture/picture';
     IssueListPage,
     IssueMapPage,
     IssueDetailsPage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

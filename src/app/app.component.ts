@@ -13,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpClient } from '@angular/common/http';
 import { config } from '../app/config';
+import { SignupPage } from '../pages/signup/signup';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +46,8 @@ export class MyApp {
       { title: 'IssueMap', component: IssueMapPage },
       { title: 'IssueList', component: IssueListPage },
       { title: 'CreateIssue', component: CreateIssuePage },
-      { title: 'IssueDetails', component: IssueDetailsPage }
+      { title: 'IssueDetails', component: IssueDetailsPage },
+      { title: 'Signup', component: SignupPage }
     ];
 
   }

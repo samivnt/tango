@@ -46,11 +46,14 @@
     <div padding>
 
       <!-- Submit button -->
-      <button type='submit' [disabled]='form.invalid' ion-button block>Log in</button>
+      <button type='submit' [disabled]='form.invalid' ion-button block outline>Log in</button>
 
       <!-- Error message displayed if the login failed -->
       <p *ngIf='loginError' ion-text color='danger'>Name or password is invalid.</p>
 
     </div>
   </form>
+  <div padding>
+      <button class="signup" ion-button block outline (click)='goToSignup()'>Sign up</button>
+  </div>
 </ion-content>
