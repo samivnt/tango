@@ -7,7 +7,6 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CreateIssuePage } from '../pages/create-issue/create-issue';
 import { IssueListPage } from '../pages/issue-list/issue-list';
-import { IssueMapPage } from '../pages/issue-map/issue-map';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -32,7 +31,6 @@ import {UserProvider} from "../providers/user/user";
     ListPage,
     CreateIssuePage,
     IssueListPage,
-    IssueMapPage,
     IssueDetailsPage,
     LoginPage,
     SignupPage
@@ -51,7 +49,6 @@ import {UserProvider} from "../providers/user/user";
     ListPage,
     CreateIssuePage,
     IssueListPage,
-    IssueMapPage,
     IssueDetailsPage,
     LoginPage,
     SignupPage
