@@ -18,6 +18,7 @@ import { VariableAst } from '@angular/compiler';
 import { IssueRequest } from '../../models/issue-request';
 import { IssueProvider } from '../../providers/issue/issue';
 import { IssueType } from '../../models/issue-type';
+import { User } from '../../models/user';
 
 /**
  * Generated class for the CreateIssuePage page.
@@ -44,6 +45,7 @@ export class CreateIssuePage {
   picture: QimgImage;
   issueRequest: IssueRequest;
   public issueTypes: IssueType[];
+  public profil: User;
 
   description: string;
   descriptionForm: FormGroup;
@@ -59,7 +61,8 @@ export class CreateIssuePage {
               private alertCtrl: AlertController,
               private geoLocalisationService: GeolocalisationProvider,
               private formBuilder: FormBuilder,
-              private issueProvider: IssueProvider) {
+              private issueProvider: IssueProvider,
+              private auth: AuthProvider,) {
                 this.issueRequest = {
                   location: {
                     coordinates: [0, 0],
@@ -75,8 +78,16 @@ export class CreateIssuePage {
   /*---- FONCTIONS ----*/
   createIssue(form: NgForm) {
     if(form.valid){
+      
+      // Récupération de l'utilisateur
+      // On pourrait déjà le récupérer au chargement de la page pour un quelconque autre besoin
+      this.getUser();
+
       console.log(this.issueRequest); 
       console.log('dans la fonction pour créer l issue');
+
+      this.uploadIssue();
+
     } else {
       console.log('form non valide');
     }
@@ -141,8 +152,7 @@ export class CreateIssuePage {
   }
 
   providerTest() {
-    var test = this.geoLocalisationService.retrieveLastRegisteredUserLocalisation();
-    console.log(test);
+    console.log(this.geoLocalisationService.retrieveActualCoordinates());
   } 
 
   test(){
@@ -158,4 +168,21 @@ export class CreateIssuePage {
     });
   }
 
+  // Récupération de l'utilisateur 
+  // ----> Est-ce qu'on devrait pas le mettre dans le provider de user??
+  getUser(){
+    this.auth.getUser().subscribe(user => {
+      this.profil = user;
+    }, err => {
+      console.warn('Could not get user authentification', err);
+    });
+  }
+
+  uploadIssue(){
+    this.issueProvider.postIssue(this.issueRequest).subscribe(issue => {
+      console.log('issue ajoutée');
+      //this.issueMessage = "Issue bien ajoutée";
+    });
+  }
+  
 }
