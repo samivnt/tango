@@ -23,6 +23,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { Camera } from '@ionic-native/camera';
 import { PictureProvider } from '../providers/picture/picture';
+import { GeolocalisationProvider } from '../providers/geolocalisation/geolocalisation';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IssueProvider } from '../providers/issue/issue';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { PictureProvider } from '../providers/picture/picture';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     IonicStorageModule.forRoot(),
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +67,9 @@ import { PictureProvider } from '../providers/picture/picture';
     Geolocation,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true },
     Camera,
-    PictureProvider
+    PictureProvider,
+    GeolocalisationProvider,
+    IssueProvider
   ]
 })
 export class AppModule {}
