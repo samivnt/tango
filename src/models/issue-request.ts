@@ -3,7 +3,7 @@
  * Based on the API documentation: https://mediacomem.github.io/comem-citizen-engagement-api/#issues_post
  */
 
-export class IssueUpload {
+export class IssueRequest {
     description: string;
     imageUrl: string;
     issueTypeHref: string;

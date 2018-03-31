@@ -6,7 +6,7 @@ import { config } from '../../app/config';
 import { Issue } from '../../models/issue';
 //import { Comment } from '../../models/comment';
 //import { CommentRequest } from '../../models/comment-request';
-import { IssueUpload } from '../../models/issue-upload';
+import { IssueRequest } from '../../models/issue-request';
 import { IssueType } from '../../models/issue-type';
 
 
