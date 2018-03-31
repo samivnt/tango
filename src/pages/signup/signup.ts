@@ -74,16 +74,17 @@ export class SignupPage {
     this.authRequest = {name:this.userRequest.name, password:this.userRequest.password};
 
     this.postUser();
-    this.auth.logIn(this.authRequest).subscribe(user => {
-      console.log(user);
-    }, err => {
-      console.log(err);
 
-    });
   }
   postUser(){
     this.userProvider.postUser(this.userRequest).subscribe(user => {
       console.log(user);
+      this.auth.logIn(this.authRequest).subscribe(user => {
+        console.log(user);
+      }, err => {
+        console.log(err);
+
+      });
     }, err => {
       console.warn('Could not create the user: ${err.message}');
     });
