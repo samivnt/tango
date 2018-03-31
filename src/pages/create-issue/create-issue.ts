@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { QimgImage } from '../../models/qimg-image';
 import { PictureProvider } from '../../providers/picture/picture';
+
 import { GeolocalisationProvider } from '../../providers/geolocalisation/geolocalisation';
 import { AuthRequest } from '../../models/auth-request';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -30,9 +31,6 @@ import { User } from '../../models/user';
 /*---- Declarations Variables ----*/ 
 var userLastPosition;
 var coordonnees = new Array();
-
-var variableTest = false;
-
 
 @Component({
   selector: 'page-create-issue',
@@ -75,24 +73,7 @@ export class CreateIssuePage {
                 };
               }
 
-  /*---- FONCTIONS ----*/
-  createIssue(form: NgForm) {
-    if(form.valid){
-      
-      // Récupération de l'utilisateur
-      // On pourrait déjà le récupérer au chargement de la page pour un quelconque autre besoin
-      this.getUser();
-
-      console.log(this.issueRequest); 
-      console.log('dans la fonction pour créer l issue');
-
-      this.uploadIssue();
-
-    } else {
-      console.log('form non valide');
-    }
-  }
-
+/*-------------- FONCTIONS --------------*/
   ionViewDidLoad() {
     console.log('page loaded');
     console.log('ionViewDidLoad CreateIssuePage');
@@ -104,7 +85,6 @@ export class CreateIssuePage {
     
     // Promesse géolocation
     geolocationPromise.then(position => {
-      console.log(position.coords.latitude);
       userLastPosition = position.coords;
       console.log(`User is at ${userLastPosition.longitude}, ${userLastPosition.latitude}`);
       let alert = this.alertCtrl.create({
@@ -130,17 +110,41 @@ export class CreateIssuePage {
 
     // Chercher les types d'issues sur l'API
     this.getIssueTypes();
-
   }
 
+  createIssue(form: NgForm) {
+    if(form.valid){
+      // Récupération de l'utilisateur
+      // On pourrait déjà le récupérer au chargement de la page pour un quelconque autre besoin
+      this.getUser();
+
+      console.log(this.issueRequest); 
+      console.log('juste avant upload');
+      this.uploadIssue();
+      console.log('juste après upload');
+    } else {
+      console.log('form non valide');
+    }
+  }
+
+  // Upload de l'issue
+  uploadIssue(){
+    this.issueProvider.postIssue(this.issueRequest).subscribe(issue => {
+      console.log('issue ajoutée');
+    });
+  }
+
+  // Prendre une photo et l'uploader
   takePicture() {
     this.pictureService.takeAndUploadPicture().subscribe(picture => {
       this.picture = picture;
+      this.issueRequest.imageUrl = picture.url;
     }, err => {
       console.warn('Could not take picture', err);
     });
   }
 
+  // Récupérer la position enregistrée du user
   getUserPosition(){
     let alert = this.alertCtrl.create({
       title: 'Vous avez été géolocalisé.',
@@ -151,14 +155,10 @@ export class CreateIssuePage {
     return userLastPosition;
   }
 
-  providerTest() {
+  // FAIRE LA FONCTION POUR METTRE A JOUR LA POSITION GPS!!!
+  miseAJourPosition() {
     console.log(this.geoLocalisationService.retrieveActualCoordinates());
   } 
-
-  test(){
-    variableTest = !variableTest;
-    console.log(variableTest);
-  }
 
   // Recupéraiton des types d'issues dans l'API
   getIssueTypes(){
@@ -175,13 +175,6 @@ export class CreateIssuePage {
       this.profil = user;
     }, err => {
       console.warn('Could not get user authentification', err);
-    });
-  }
-
-  uploadIssue(){
-    this.issueProvider.postIssue(this.issueRequest).subscribe(issue => {
-      console.log('issue ajoutée');
-      //this.issueMessage = "Issue bien ajoutée";
     });
   }
   
