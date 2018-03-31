@@ -83,7 +83,6 @@ export class SignupPage {
         console.log(user);
       }, err => {
         console.log(err);
-
       });
     }, err => {
       console.warn('Could not create the user: ${err.message}');

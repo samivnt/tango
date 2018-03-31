@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {Issue} from "../../models/issue";
+import {IssueProvider} from "../../providers/issue/issue";
 
 /**
  * Generated class for the IssueListPage page.
@@ -13,12 +15,20 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'issue-list.html',
 })
 export class IssueListPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  issue : Issue;
+  issuesList : Issue[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public issueProvider : IssueProvider) {
   }
 
   ionViewDidLoad() {
+    this.issueProvider.getIssues().subscribe(issues =>{
+      console.log(issues);
+      this.issuesList = issues;
+    }, err => {
+      console.log(err);
+    });
     console.log('ionViewDidLoad IssueListPage');
+
   }
 
 }
