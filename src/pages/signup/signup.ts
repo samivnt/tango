@@ -10,7 +10,7 @@ import {HomePage} from '../home/home';
 import {LoginPage} from "../login/login";
 
 import {UserRequest} from "../../models/user-request";
-import {UserProvider} from "../../app/providers/user/user";
+import {UserProvider} from "../../providers/user/user";
 
 /**
  * Generated class for the SignupPage page.

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {User} from "../../../models/user";
-import {config} from "../../config";
-import {UserRequest} from "../../../models/user-request";
+import {User} from "../../models/user";
+import {config} from "../../app/config";
+import {UserRequest} from "../../models/user-request";
 
 /*
   Generated class for the UserProvider provider.

@@ -23,7 +23,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { Camera } from '@ionic-native/camera';
 import { PictureProvider } from '../providers/picture/picture';
-import {UserProvider} from "./providers/user/user";
+import {UserProvider} from "../providers/user/user";
 
 @NgModule({
   declarations: [
