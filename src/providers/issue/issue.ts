@@ -30,5 +30,8 @@ export class IssueProvider {
     return this.http.get<IssueType[]>(config.apiUrl + '/issueTypes');
   }
 
+  getIssues(): Observable<Issue[]>{
+    return this.http.get<Issue[]>(config.apiUrl + "/issues");
+  }
 
 }
