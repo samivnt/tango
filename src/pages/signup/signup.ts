@@ -12,6 +12,11 @@ import {LoginPage} from "../login/login";
 import {UserRequest} from "../../models/user-request";
 import {UserProvider} from "../../providers/user/user";
 
+import { ToastController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { config } from '../../app/config';
+import {User} from "../../models/user";
+
 /**
  * Generated class for the SignupPage page.
  *
@@ -43,11 +48,14 @@ export class SignupPage {
   @ViewChild(NgForm)
   form: NgForm;
 
+  profil: User;
+
   constructor(
       private auth: AuthProvider,
       private navCtrl: NavController,
       public navParams: NavParams,
-      public userProvider : UserProvider
+      public userProvider : UserProvider,
+      public toastCtrl: ToastController
   ) {
     this.authRequest = new AuthRequest();
     this.userRequest = new UserRequest();
@@ -56,6 +64,7 @@ export class SignupPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
+    this.getUser();
   }
 
   onSubmit($event) {
@@ -81,6 +90,7 @@ export class SignupPage {
       console.log(user);
       this.auth.logIn(this.authRequest).subscribe(user => {
         console.log(user);
+        this.presentToast();
       }, err => {
         console.log(err);
       });
@@ -89,4 +99,23 @@ export class SignupPage {
     });
   }
 
+  getUser(){
+    this.auth.getUser().subscribe(user =>{
+    this.profil = user;
+    console.log(this.profil);
+    });
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Welcome to '.concat(this.userRequest.name),
+      duration: 9000,
+      position: 'top',
+      showCloseButton: true,
+      closeButtonText: 'Merci !',
+      dismissOnPageChange: true,
+      cssClass: "toast",
+    });
+    toast.present();
+  }
 }
