@@ -15,7 +15,8 @@
       <ion-item>
         <ion-label floating>Username</ion-label>
         <ion-input type='text' name='name'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.name' required></ion-input>
+                   #nameInput='ngModel' [(ngModel)]='userRequest.name' maxlength='25' required></ion-input>
+
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
@@ -27,7 +28,8 @@
       <ion-item>
         <ion-label floating>Password</ion-label>
         <ion-input type='password' name='password'
-                   #passwordInput='ngModel' [(ngModel)]='userRequest.password' required></ion-input>
+                   #passwordInput='ngModel' [(ngModel)]='userRequest.password' minlength='4' required></ion-input>
+
       </ion-item>
 
       <!-- Error message displayed if the password is invalid -->
@@ -37,9 +39,10 @@
 
       <!-- Firstame input -->
       <ion-item>
-        <ion-label floating>Firstame</ion-label>
+        <ion-label floating>Firstname</ion-label>
         <ion-input type='text' name='firstname'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.firstname' required></ion-input>
+                   #nameInput='ngModel' [(ngModel)]='userRequest.firstname' minlength='2' maxlength='25' required></ion-input>
+
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
@@ -51,7 +54,7 @@
       <ion-item>
         <ion-label floating>Lastname</ion-label>
         <ion-input type='text' name='lastname'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.lastname' required></ion-input>
+                   #nameInput='ngModel' [(ngModel)]='userRequest.lastname' minlength='2' maxlength='25' required></ion-input>
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
@@ -64,6 +67,7 @@
         <ion-label floating>Phone</ion-label>
         <ion-input type='text' name='phone'
                    #nameInput='ngModel' [(ngModel)]='userRequest.phone' required></ion-input>
+
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
@@ -72,9 +76,6 @@
       </ion-item>
 
     </ion-list>
-
-    <p>Tous les champs sont requis</p>
-
     <div padding>
 
       <!-- Submit button -->
