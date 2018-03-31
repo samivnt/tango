@@ -7,7 +7,6 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CreateIssuePage } from '../pages/create-issue/create-issue';
 import { IssueListPage } from '../pages/issue-list/issue-list';
-import { IssueMapPage } from '../pages/issue-map/issue-map';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -26,6 +25,7 @@ import { PictureProvider } from '../providers/picture/picture';
 import { GeolocalisationProvider } from '../providers/geolocalisation/geolocalisation';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IssueProvider } from '../providers/issue/issue';
+import {UserProvider} from "../providers/user/user";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import { IssueProvider } from '../providers/issue/issue';
     ListPage,
     CreateIssuePage,
     IssueListPage,
-    IssueMapPage,
     IssueDetailsPage,
     LoginPage,
     SignupPage
@@ -54,7 +53,6 @@ import { IssueProvider } from '../providers/issue/issue';
     ListPage,
     CreateIssuePage,
     IssueListPage,
-    IssueMapPage,
     IssueDetailsPage,
     LoginPage,
     SignupPage
@@ -69,7 +67,8 @@ import { IssueProvider } from '../providers/issue/issue';
     Camera,
     PictureProvider,
     GeolocalisationProvider,
-    IssueProvider
+    IssueProvider,
+    UserProvider
   ]
 })
 export class AppModule {}

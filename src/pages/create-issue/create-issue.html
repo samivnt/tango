@@ -1,0 +1,88 @@
+<!--
+  Generated template for the CreateIssuePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CreateIssue</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content block>
+  <button ion-button (click)='providerTest()'>retrieve without the provider</button>
+  <button ion-button (click)='providerTest()'>retrieve last geoloc from provider</button>  
+  <button ion-button (click)='test()'>variable de test</button>  
+
+  <!-- FORMULAIRE -->
+  <form #issueCreationForm='ngForm' (submit)='createIssue(issueCreationForm)'>
+    <!-- Description input -->
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-input type='text' required
+                 name='description' [(ngModel)]='issueUpload.description' #descriptionInput='ngModel'>
+      </ion-input>
+    </ion-item>
+  
+    <!-- Image url -->
+    <ion-item>
+      <ion-label floating>Image 1</ion-label>
+      <ion-input type='text' required
+                 name='imageUrl' [(ngModel)]='issueUpload.imageUrl' #imageUrlInput='ngModel'>
+      </ion-input>
+    </ion-item>
+
+    <!-- Longitude input -->
+    <ion-item>
+      <ion-label floating>Longitude</ion-label>
+      <ion-input type='number' required
+                 name='longitude' [(ngModel)]='issueUpload.location.coordinates[0]'>
+      </ion-input>
+    </ion-item>
+   
+    <!-- Latitude input -->
+    <ion-item>
+      <ion-label floating>Latitude</ion-label>
+      <ion-input type='number' required
+                 name='latitude' [(ngModel)]='issueUpload.location.coordinates[1]'>
+      </ion-input>
+    </ion-item>
+
+    <!-- Issue type HREF -->
+    <ion-item *ngIf="issueTypes">
+      <ion-label floating>Issue Type HREF</ion-label>
+      <ion-select name="issueType" [(ngModel)]="issueUpload.issueTypeHref" #issueTypeInput='ngModel'>
+        <ion-option *ngFor="let issueType of issueTypes" value="/api/issueTypes/{{issueType.id}}">{{issueType.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Tags --> 
+    <ion-item>
+      <ion-label floating>Tags</ion-label>
+      <ion-input type='text' required
+                 name='issueTags' [(ngModel)]='issueUpload.tags'>
+      </ion-input>
+    </ion-item>
+
+    <!-- Submit button -->
+    <div padding>
+      <button type='submit' ion-button block outline [disabled]='issueCreationForm.invalid'>Enregistrer l'issue</button>
+    </div>
+
+  </form> <!-- Fin du formulaire d'upload issue -->
+  
+  <p *ngIf='descriptionInput.invalid && descriptionInput.dirty'>
+      A description is required.
+  </p>
+  <br/>
+  <p *ngIf='description'>
+    {{ description }}
+  </p>
+
+</ion-content>

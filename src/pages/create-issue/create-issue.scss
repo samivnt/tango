@@ -1,0 +1,12 @@
+page-create-issue {
+
+    ion-spinner {
+        display: block;
+        margin:50px auto;
+    }
+
+    ion-input.ng-invalid.ng-dirty {
+        background-color: #fff3f3;
+    }
+
+}
