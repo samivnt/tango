@@ -23,10 +23,12 @@ export class IssueProvider {
     console.log('Hello IssueProvider Provider');
   }
 
+/*--- GET ---*/
   // Récupération des issues types depuis l'API
   getIssueTypes(): Observable<IssueType[]> {
     console.log('nous sommes dans getIssueTypes');
     return this.http.get<IssueType[]>(config.apiUrl + '/issueTypes');
   }
+
 
 }

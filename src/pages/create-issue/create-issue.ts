@@ -150,8 +150,8 @@ export class CreateIssuePage {
     console.log(variableTest);
   }
 
+  // Recupéraiton des types d'issues dans l'API
   getIssueTypes(){
-    console.log('kareeeeen');
     this.issueProvider.getIssueTypes().subscribe(issueTypes => {
       this.issueTypes = issueTypes;
       console.log(this.issueTypes);
