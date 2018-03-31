@@ -26,7 +26,7 @@
     <ion-item>
       <ion-label floating>Description</ion-label>
       <ion-input type='text' required
-                 name='description' [(ngModel)]='issueUpload.description' #descriptionInput='ngModel'>
+                 name='description' [(ngModel)]='issueRequest.description' #descriptionInput='ngModel'>
       </ion-input>
     </ion-item>
   
@@ -34,7 +34,7 @@
     <ion-item>
       <ion-label floating>Image 1</ion-label>
       <ion-input type='text' required
-                 name='imageUrl' [(ngModel)]='issueUpload.imageUrl' #imageUrlInput='ngModel'>
+                 name='imageUrl' [(ngModel)]='issueRequest.imageUrl' #imageUrlInput='ngModel'>
       </ion-input>
     </ion-item>
 
@@ -42,7 +42,7 @@
     <ion-item>
       <ion-label floating>Longitude</ion-label>
       <ion-input type='number' required
-                 name='longitude' [(ngModel)]='issueUpload.location.coordinates[0]'>
+                 name='longitude' [(ngModel)]='issueRequest.location.coordinates[0]'>
       </ion-input>
     </ion-item>
    
@@ -50,14 +50,14 @@
     <ion-item>
       <ion-label floating>Latitude</ion-label>
       <ion-input type='number' required
-                 name='latitude' [(ngModel)]='issueUpload.location.coordinates[1]'>
+                 name='latitude' [(ngModel)]='issueRequest.location.coordinates[1]'>
       </ion-input>
     </ion-item>
 
     <!-- Issue type HREF -->
     <ion-item *ngIf="issueTypes">
       <ion-label floating>Issue Type HREF</ion-label>
-      <ion-select name="issueType" [(ngModel)]="issueUpload.issueTypeHref" #issueTypeInput='ngModel'>
+      <ion-select name="issueType" [(ngModel)]="issueRequest.issueTypeHref" #issueTypeInput='ngModel'>
         <ion-option *ngFor="let issueType of issueTypes" value="/api/issueTypes/{{issueType.id}}">{{issueType.name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -66,7 +66,7 @@
     <ion-item>
       <ion-label floating>Tags</ion-label>
       <ion-input type='text' required
-                 name='issueTags' [(ngModel)]='issueUpload.tags'>
+                 name='issueTags' [(ngModel)]='issueRequest.tags'>
       </ion-input>
     </ion-item>
 

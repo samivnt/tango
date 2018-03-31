@@ -15,7 +15,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { AlertController } from 'ionic-angular';
 import { VariableAst } from '@angular/compiler';
 
-import { IssueUpload } from '../../models/issue-upload';
+import { IssueRequest } from '../../models/issue-request';
 import { IssueProvider } from '../../providers/issue/issue';
 import { IssueType } from '../../models/issue-type';
 
@@ -42,7 +42,7 @@ export class CreateIssuePage {
 
   pictureData: string;
   picture: QimgImage;
-  issueUpload: IssueUpload;
+  issueRequest: IssueRequest;
   public issueTypes: IssueType[];
 
   description: string;
@@ -60,7 +60,7 @@ export class CreateIssuePage {
               private geoLocalisationService: GeolocalisationProvider,
               private formBuilder: FormBuilder,
               private issueProvider: IssueProvider) {
-                this.issueUpload = {
+                this.issueRequest = {
                   location: {
                     coordinates: [0, 0],
                     type: "Point"
@@ -75,7 +75,7 @@ export class CreateIssuePage {
   /*---- FONCTIONS ----*/
   createIssue(form: NgForm) {
     if(form.valid){
-      console.log(this.issueUpload); 
+      console.log(this.issueRequest); 
       console.log('dans la fonction pour créer l issue');
     } else {
       console.log('form non valide');
@@ -104,7 +104,7 @@ export class CreateIssuePage {
       alert.present();
 
       // Ajouter les coordonnées à l'issue
-      this.issueUpload.location = {
+      this.issueRequest.location = {
         "type": "Point",
         "coordinates": [
           userLastPosition.longitude,
