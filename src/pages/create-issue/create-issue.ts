@@ -117,6 +117,7 @@ export class CreateIssuePage {
       return userLastPosition;
     });
 
+    // Chercher les types d'issues sur l'API
     this.getIssueTypes();
 
   }
@@ -151,10 +152,10 @@ export class CreateIssuePage {
 
   getIssueTypes(){
     console.log('kareeeeen');
-   /*this.issueProvider.getIssueTypes().subscribe(issueTypes => {
+    this.issueProvider.getIssueTypes().subscribe(issueTypes => {
       this.issueTypes = issueTypes;
       console.log(this.issueTypes);
-    });*/
+    });
   }
 
 }
