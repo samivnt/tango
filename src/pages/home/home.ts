@@ -3,18 +3,21 @@ import { NavController, NavParams } from 'ionic-angular';
 import { latLng, Map, MapOptions, marker, Marker, tileLayer } from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation';
 
+import {Issue} from "../../models/issue";
+import {IssueProvider} from "../../providers/issue/issue";
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
+
+  public issues: Issue[];
   map: Map;
-
   mapOptions: MapOptions;
-
   mapMarkers: Marker[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public issueProvider: IssueProvider) {
     const tileLayerUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     const tileLayerOptions = { maxZoom: 18 };
     this.mapOptions = {
@@ -24,11 +27,6 @@ export class HomePage {
       zoom: 13,
       center: latLng(46.778186, 6.641524)
     };
-    this.mapMarkers = [
-      marker([ 46.778186, 6.641524 ]).bindTooltip('Hello'),
-      marker([ 46.780796, 6.647395 ]),
-      marker([ 46.778298, 6.657848 ]).bindTooltip('Le quartier !')
-    ];
   }
 
   onMapReady(map: Map) {
@@ -40,13 +38,31 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    //Récuperation des issues et création des markers
+    this.issueProvider.getIssues().subscribe(issues => {
+      this.issues = issues;
+      this.issues.forEach(issue =>{
+        this.generateMarker(issue).addTo(this.map);
+      })
+    });
+
     const geolocationPromise = this.geolocation.getCurrentPosition();
     geolocationPromise.then(position => {
       const coords = position.coords;
+
+    /*  this.localisation = new Marker([coords.latitude, coords.longitude]);
+      this.localisation.addTo(this.map);*/
+      this.map.setView([coords.latitude, coords.longitude], 14);
+
       console.log(`User is at ${coords.longitude}, ${coords.latitude}`);
     }).catch(err => {
       console.warn(`Could not retrieve user position because: ${err.message}`);
     });
   }
 
+  generateMarker(issue: Issue){
+    return marker([issue.location.coordinates[1],issue.location.coordinates[0]]).bindTooltip(issue.description).on('click',()=>{
+      console.log(issue.id);
+    });
+  }
 }
