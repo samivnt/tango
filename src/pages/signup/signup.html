@@ -33,7 +33,7 @@
       </ion-item>
 
       <!-- Error message displayed if the password is invalid -->
-      <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+      <ion-item *ngIf='passwordInput.invalid && passwordInput.dirty' no-lines>
         <p ion-text color='danger'>Password is required.</p>
       </ion-item>
 
@@ -41,12 +41,12 @@
       <ion-item>
         <ion-label floating>Firstname</ion-label>
         <ion-input type='text' name='firstname'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.firstname' minlength='2' maxlength='25' required></ion-input>
+                   #firstnameInput='ngModel' [(ngModel)]='userRequest.firstname' minlength='2' maxlength='25' required></ion-input>
 
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
-      <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+      <ion-item *ngIf='firstnameInput.invalid && firstnameInput.dirty' no-lines>
         <p ion-text color='danger'>Firstame is required.</p>
       </ion-item>
 
@@ -54,11 +54,11 @@
       <ion-item>
         <ion-label floating>Lastname</ion-label>
         <ion-input type='text' name='lastname'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.lastname' minlength='2' maxlength='25' required></ion-input>
+                   #lastnameInput='ngModel' [(ngModel)]='userRequest.lastname' minlength='2' maxlength='25' required></ion-input>
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
-      <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+      <ion-item *ngIf='lastnameInput.invalid && lastnameInput.dirty' no-lines>
         <p ion-text color='danger'>Lastname is required.</p>
       </ion-item>
 
@@ -66,12 +66,12 @@
       <ion-item>
         <ion-label floating>Phone</ion-label>
         <ion-input type='text' name='phone'
-                   #nameInput='ngModel' [(ngModel)]='userRequest.phone' required></ion-input>
+                   #phoneInput='ngModel' [(ngModel)]='userRequest.phone' required></ion-input>
 
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
-      <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+      <ion-item *ngIf='phoneInput.invalid && phoneInput.dirty' no-lines>
         <p ion-text color='danger'>Lastname is required.</p>
       </ion-item>
 
