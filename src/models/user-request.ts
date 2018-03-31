@@ -1,5 +1,4 @@
-export class User {
-  id: string;
+export class UserRequest {
   name: string;
   password:string;
   firstname: string;
