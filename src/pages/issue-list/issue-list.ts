@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Issue} from "../../models/issue";
 import {IssueProvider} from "../../providers/issue/issue";
+import {IssueDetailsPage} from "../issue-details/issue-details";
 
 /**
  * Generated class for the IssueListPage page.
@@ -29,6 +30,11 @@ export class IssueListPage {
     });
     console.log('ionViewDidLoad IssueListPage');
 
+  }
+
+  goToThisIssue(issueADetailler : Issue){
+    console.log("dans issue list, la issue sur laquelle on clique : " + issueADetailler);
+    this.navCtrl.push(IssueDetailsPage, issueADetailler);
   }
 
 }
