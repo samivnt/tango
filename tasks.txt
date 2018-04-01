@@ -1,16 +1,4 @@
-A faire (tuto) :
-- Installer (Camera, Geoloc) : https://mediacomem.github.io/comem-webdev-docs/2017-2018/subjects/ionic-extras/?home=MediaComem%2Fcomem-appmob%23readme#1
-- Installer Image Upoad : https://github.com/MediaComem/comem-appmob/blob/master/IMAGE-UPLOAD.md
-
 A faire :
-- coder
-- coder
-- coder
-- coder
-- coder
-- coder
-- coder
-- coder
-- coder
-- coder
-- commenter
+- Il faut que je gère les tags pour les issues
+- fasse l'ajout d'une issue un peu plus jolie quand même
+- implémenter de la background localisation?

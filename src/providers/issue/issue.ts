@@ -8,6 +8,7 @@ import { Issue } from '../../models/issue';
 //import { CommentRequest } from '../../models/comment-request';
 import { IssueRequest } from '../../models/issue-request';
 import { IssueType } from '../../models/issue-type';
+import { IssueListPage } from '../../pages/issue-list/issue-list';
 
 
 /*
@@ -32,6 +33,12 @@ export class IssueProvider {
 
   getIssues(): Observable<Issue[]>{
     return this.http.get<Issue[]>(config.apiUrl + "/issues");
+  }
+
+/*--- POST ---*/
+  // Création d'une issue
+  postIssue(issueRequest:IssueRequest): Observable<Issue>{
+    return this.http.post<Issue>(config.apiUrl + '/issues', issueRequest).pipe();
   }
 
 }

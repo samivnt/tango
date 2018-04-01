@@ -16,25 +16,16 @@
 </ion-header>
 
 <ion-content block>
-  <button ion-button (click)='providerTest()'>retrieve without the provider</button>
-  <button ion-button (click)='providerTest()'>retrieve last geoloc from provider</button>  
-  <button ion-button (click)='test()'>variable de test</button>  
+  <button ion-button (click)='providerTest()'>retrieve from the provider</button>
 
   <!-- FORMULAIRE -->
   <form #issueCreationForm='ngForm' (submit)='createIssue(issueCreationForm)'>
     <!-- Description input -->
     <ion-item>
       <ion-label floating>Description</ion-label>
+      <!-- Nous avons choisi de mettre le description en required au contraire de l'API car nous jugeons cette information tout de même assez importante.-->
       <ion-input type='text' required
                  name='description' [(ngModel)]='issueRequest.description' #descriptionInput='ngModel'>
-      </ion-input>
-    </ion-item>
-  
-    <!-- Image url -->
-    <ion-item>
-      <ion-label floating>Image 1</ion-label>
-      <ion-input type='text' required
-                 name='imageUrl' [(ngModel)]='issueRequest.imageUrl' #imageUrlInput='ngModel'>
       </ion-input>
     </ion-item>
 
@@ -57,7 +48,7 @@
     <!-- Issue type HREF -->
     <ion-item *ngIf="issueTypes">
       <ion-label floating>Issue Type HREF</ion-label>
-      <ion-select name="issueType" [(ngModel)]="issueRequest.issueTypeHref" #issueTypeInput='ngModel'>
+      <ion-select name="issueType" [(ngModel)]="issueRequest.issueTypeHref" #issueTypeInput='ngModel' required>
         <ion-option *ngFor="let issueType of issueTypes" value="/api/issueTypes/{{issueType.id}}">{{issueType.name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -76,13 +67,21 @@
     </div>
 
   </form> <!-- Fin du formulaire d'upload issue -->
-  
-  <p *ngIf='descriptionInput.invalid && descriptionInput.dirty'>
-      A description is required.
-  </p>
-  <br/>
-  <p *ngIf='description'>
-    {{ description }}
-  </p>
+   
+    <!-- Photo -->
+    <button ion-button (click)='takePicture()'>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <!-- Affichage de la photo -->
+      <img *ngIf='picture' [src]='picture.url' />
+
+  <ion-item>
+    <p *ngIf='descriptionInput.invalid && descriptionInput.dirty'>
+        A description is required.
+    </p>
+    <p *ngIf='description'>
+      {{ description }}
+    </p>
+  </ion-item>
 
 </ion-content>
