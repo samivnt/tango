@@ -6,6 +6,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import {Issue} from "../../models/issue";
 import {IssueProvider} from "../../providers/issue/issue";
 import {CreateIssuePage} from "../create-issue/create-issue";
+import {IssueDetailsPage} from "../issue-details/issue-details";
 
 @Component({
   selector: 'page-home',
@@ -64,6 +65,8 @@ export class HomePage {
   generateMarker(issue: Issue){
     return marker([issue.location.coordinates[1],issue.location.coordinates[0]]).bindTooltip(issue.description).on('click',()=>{
       console.log(issue.id);
+      this.navCtrl.push(IssueDetailsPage, issue);
+
     });
   }
 
