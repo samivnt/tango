@@ -16,7 +16,6 @@ import {IssueDetailsPage} from "../issue-details/issue-details";
   templateUrl: 'issue-list.html',
 })
 export class IssueListPage {
-  issue : Issue;
   issuesList : Issue[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public issueProvider : IssueProvider) {
   }

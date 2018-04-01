@@ -20,4 +20,40 @@
   <div><img src="{{issue.imageUrl}}"></div>
   <div><p>{{issue.description}}</p></div>
 
+
+
+  <figure>
+    <figcaption>Commentaires</figcaption>
+  <ul>
+    <li *ngFor="let comment of commentsList" >{{comment.text}}</li>
+  </ul>
+  </figure>
+
+
+
+
+
+  <form (submit)='onSubmit($event)'>
+
+    <!-- Comment input -->
+    <ion-item>
+      <ion-label floating>Commentaire</ion-label>
+      <ion-input type='text' name='comment'
+                 #commentInput='ngModel' [(ngModel)]='commentRequest.text' required></ion-input>
+
+    </ion-item>
+
+    <!-- Error message displayed if the username is invalid -->
+    <ion-item *ngIf='commentInput.invalid && commentInput.dirty' no-lines>
+      <p ion-text color='danger'>Comment is required.</p>
+    </ion-item>
+
+    <div padding>
+
+      <!-- Submit button -->
+      <button type='submit' [disabled]='form.invalid' ion-button block outline>Ajouter mon commentaire</button>
+
+    </div>
+  </form>
+
 </ion-content>

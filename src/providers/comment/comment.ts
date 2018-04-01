@@ -18,11 +18,11 @@ export class CommentProvider {
   }
 
   getComments(issueID : string): Observable<Comment[]>{
-    return this.http.get<Comment[]>(config.apiUrl + issueID + "/comments");
+    return this.http.get<Comment[]>(config.apiUrl + "/issues/" + issueID + "/comments");
   }
 
-  postUser(commentRequest: CommentRequest, issueID : string): Observable<Comment> {
-    return this.http.post<Comment>(config.apiUrl + issueID + "/comments", commentRequest).pipe();
+  postComment(commentRequest: CommentRequest, issueID : string): Observable<Comment> {
+    return this.http.post<Comment>(config.apiUrl + "/issues/" +  issueID + "/comments", commentRequest).pipe();
   }
 
 }

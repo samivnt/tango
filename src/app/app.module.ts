@@ -26,6 +26,7 @@ import { GeolocalisationProvider } from '../providers/geolocalisation/geolocalis
 import { ReactiveFormsModule } from '@angular/forms';
 import { IssueProvider } from '../providers/issue/issue';
 import {UserProvider} from "../providers/user/user";
+import {CommentProvider} from "../providers/comment/comment";
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import {UserProvider} from "../providers/user/user";
     PictureProvider,
     GeolocalisationProvider,
     IssueProvider,
-    UserProvider
+    UserProvider,
+    CommentProvider
   ]
 })
 export class AppModule {}
