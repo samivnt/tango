@@ -1,5 +1,13 @@
 page-home {
   .map {
     height: 100%;
+    z-index: 1;
   }
+  .material-icons.md-48 { font-size: 48px; }
+  .material-icons.md-red { color: rgba(255, 0, 0, 1); }
+  #plusButton{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2;}
 }

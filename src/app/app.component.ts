@@ -43,9 +43,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'IssueList', component: IssueListPage },
-      { title: 'CreateIssue', component: CreateIssuePage },
+      { title: 'CreateIssue', component: CreateIssuePage },/*
       { title: 'IssueDetails', component: IssueDetailsPage },
-      { title: 'Signup', component: SignupPage }
+      { title: 'Signup', component: SignupPage }*/
     ];
 
   }

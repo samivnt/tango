@@ -1,5 +1,5 @@
 <ion-header>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -12,4 +12,5 @@
 
 <ion-content padding>
   <div class='map' leaflet [leafletOptions]='mapOptions' [leafletLayers]='mapMarkers' (leafletMapReady)='onMapReady($event)'>></div>
+  <i class="material-icons md-48 md-red" id="plusButton" (click)="goToCreateIssue()">add_circle</i>
 </ion-content>

@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import {Issue} from "../../models/issue";
 import {IssueProvider} from "../../providers/issue/issue";
+import {CreateIssuePage} from "../create-issue/create-issue";
 
 @Component({
   selector: 'page-home',
@@ -65,4 +66,9 @@ export class HomePage {
       console.log(issue.id);
     });
   }
+
+  goToCreateIssue(){
+    this.navCtrl.push(CreateIssuePage);
+  }
+
 }
