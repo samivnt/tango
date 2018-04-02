@@ -31,6 +31,26 @@ export class IssueListPage {
 
   }
 
+  segmentChanged($status){
+    console.log("Cliqué sur " + $status);
+    if($status === "all"){
+      this.issueProvider.getIssues().subscribe(issues =>{
+        this.issuesList = issues;
+        console.log("Les issues de new : " + this.issuesList);
+      }, err => {
+        console.log(err);
+      });
+    }
+    else{
+      this.issueProvider.getIssuesFilteredByStatus($status).subscribe(issues =>{
+        this.issuesList = issues;
+        console.log("Les issues de autre chose que new : " + this.issuesList);
+      }, err => {
+        console.log(err);
+      });
+    }
+  }
+
   goToThisIssue(issueADetailler : Issue){
     console.log("dans issue list, la issue sur laquelle on clique : " + issueADetailler);
     this.navCtrl.push(IssueDetailsPage, issueADetailler);
