@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { CreateIssuePage } from '../pages/create-issue/create-issue';
 import { IssueListPage } from '../pages/issue-list/issue-list';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
@@ -32,7 +31,6 @@ import {CommentProvider} from "../providers/comment/comment";
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     CreateIssuePage,
     IssueListPage,
     IssueDetailsPage,
@@ -51,7 +49,6 @@ import {CommentProvider} from "../providers/comment/comment";
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     CreateIssuePage,
     IssueListPage,
     IssueDetailsPage,
