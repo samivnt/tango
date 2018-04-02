@@ -17,16 +17,41 @@
 
 
 <ion-content padding>
+
+
   <div><img src="{{issue.imageUrl}}"></div>
   <div><p>{{issue.description}}</p></div>
 
+  <h2>Status actuel : {{issue.state}}</h2>
+  <form>
 
+    <ion-item>
+      <ion-label floating>Votre commentaire</ion-label>
+      <ion-input type='text' name='reason'
+                 #reason='ngModel' [(ngModel)]='actionRequest.reason' minlength='2' maxlength='50' required [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+    <span *ngIf="isStaff()">
+    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'" (click)="setState('start')">
+      <ion-icon name='build'></ion-icon>
+      Start
+    </button>
+    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='inProgress'" (click)="setState('resolve')">
+      <ion-icon name='checkmark' is-active="false"></ion-icon>
+      Resolve
+    </button>
+    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'||issue.state=='inProgress'" (click)="setState('reject')">
+      <ion-icon name='close' is-active="false"></ion-icon>
+      Reject
+    </button>
+  </span>
+  </form>
 
   <figure>
     <figcaption>Commentaires</figcaption>
-  <ul>
-    <li *ngFor="let comment of commentsList" >{{comment.text}}</li>
-  </ul>
+    <ul>
+      <li *ngFor="let comment of commentsList" >{{comment.text}}</li>
+    </ul>
   </figure>
 
 

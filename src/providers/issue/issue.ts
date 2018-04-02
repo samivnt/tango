@@ -9,6 +9,7 @@ import { Issue } from '../../models/issue';
 import { IssueRequest } from '../../models/issue-request';
 import { IssueType } from '../../models/issue-type';
 import { IssueListPage } from '../../pages/issue-list/issue-list';
+import {ActionRequest} from "../../models/action-request";
 
 
 /*
@@ -45,4 +46,8 @@ export class IssueProvider {
     return this.http.post<Issue>(config.apiUrl + '/issues', issueRequest).pipe();
   }
 
+  /* --- SET ---*/
+  setState(action : ActionRequest, issueId : String) : Observable<Issue>{
+    return this.http.post<Issue>(config.apiUrl + "/issues/" + issueId + "/actions", action).pipe();
+  }
 }
