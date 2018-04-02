@@ -53,6 +53,7 @@ export class IssueDetailsPage {
       console.log("Pas authentifié !");
       return false;
     }else{
+      console.log('caca');
       return (this.user.roles.indexOf("staff") > -1);
     }
   }
@@ -61,6 +62,7 @@ export class IssueDetailsPage {
     this.commentProvider.getComments(this.issue.id).subscribe(comments =>{
       console.log(comments);
       this.commentsList = comments;
+      console.log(comments[0]);
     }, err => {
       console.log(err);
     });
