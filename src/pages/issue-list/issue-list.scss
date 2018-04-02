@@ -1,6 +1,9 @@
 page-issue-list {
+  ion-thumbnail{
+    width: 100%;
+  }
   img{
     border-radius: 8px;
-    max-height: 70px;
+    width: 100%;
   }
 }
