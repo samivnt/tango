@@ -63,6 +63,15 @@ export class HomePage {
   }
 
   generateMarker(issue: Issue){
+  /*  var myIcon = L.icon({
+    iconUrl: 'my-icon.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    shadowUrl: 'my-icon-shadow.png',
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+  });*/
     return marker([issue.location.coordinates[1],issue.location.coordinates[0]]).bindTooltip(issue.description).on('click',()=>{
       console.log(issue.id);
       this.navCtrl.push(IssueDetailsPage, issue);
