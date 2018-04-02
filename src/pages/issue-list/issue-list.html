@@ -15,19 +15,19 @@
 
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="status" (ionChange)="segmentChanged(status)">
-      <ion-segment-button value="all">
+      <ion-segment-button value="all" class="title_list">
         All
       </ion-segment-button>
-      <ion-segment-button value="new">
+      <ion-segment-button value="new" class="title_list">
         New
       </ion-segment-button>
-      <ion-segment-button value="inProgress">
+      <ion-segment-button value="inProgress" class="title_list">
         In Progress
       </ion-segment-button>
-      <ion-segment-button value="rejected">
+      <ion-segment-button value="rejected" class="title_list">
         Rejected
       </ion-segment-button>
-      <ion-segment-button value="resolved">
+      <ion-segment-button value="resolved" class="title_list">
         Resolved
       </ion-segment-button>
     </ion-segment>
@@ -45,7 +45,7 @@
    <button ion-button="" class="button button-md button-default button-default-md" name="canceled"><span class="button-inner">Canceled</span></button>
  -->
  <div [ngSwitch]="status" >
-  
+
   <div *ngSwitchCase="'all'">
     <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
       <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">

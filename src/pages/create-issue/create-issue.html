@@ -23,7 +23,7 @@
     <img *ngIf='picture' class="centeredImage" [src]='picture.url' />
   </div>
   <!-- Bouton pour prendre Photo -->
-  <button ion-button (click)='takePicture()' full>
+  <button ion-button (click)='takePicture()' full class="button-orange">
       <ion-icon name="camera"></ion-icon>
   </button>
   <!--
@@ -52,7 +52,7 @@
                  name='longitude' [(ngModel)]='issueRequest.location.coordinates[0]'>
       </ion-input>
     </ion-item>
-   
+
     <!-- Latitude input -->
     <ion-item>
       <ion-label floating>Latitude</ion-label>
@@ -69,10 +69,10 @@
       </ion-select>
     </ion-item>
 
-    <!-- Tags --> 
+    <!-- Tags -->
     <ion-item>
-      <ion-tags-input 
-      [(ngModel)]='issueRequest.tags' name = 'issueTags' [placeholder]="'+ tag'" 
+      <ion-tags-input
+      [(ngModel)]='issueRequest.tags' name = 'issueTags' [placeholder]="'+ tag'"
       [canBackspaceRemove]="true" [separatorStr]="','" [maxTags]="5"
       [once]="'true'" [mode]="'ios'"
       >
@@ -86,7 +86,7 @@
     </div>
 
   </form> <!-- Fin du formulaire d'upload issue -->
-  
+
   <ion-item>
     <p *ngIf='descriptionInput.invalid && descriptionInput.dirty'>
         A description is required.
