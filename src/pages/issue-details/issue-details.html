@@ -16,69 +16,69 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content block>
 
+  <div *ngIf='issue.imageUrl' style="position: relative" class="centeredImageContainer">
+    <img class="centeredImage" src="{{issue.imageUrl}}" />
+  </div>
+  
+  <div padding>
+    <h6>Status actuel : {{issue.state}}</h6>
+    <div><p>{{issue.description}}</p></div>
+  </div>
 
-  <div><img src="{{issue.imageUrl}}"></div>
-  <div><p>{{issue.description}}</p></div>
+  <!-- FOR STAFF -->
+  <ion-list *ngIf="isStaff()">
+    <ion-list-header>Staff section</ion-list-header>
+    <form>
+      <ion-item>
+        <ion-input type='text' name='reason' placeholder='Laissez votre commentaire...'
+                  #reason='ngModel' [(ngModel)]='actionRequest.reason' minlength='2' maxlength='50' required [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+      <ion-item>
+          <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'" (click)="setState('start')">
+            <ion-icon name='build'></ion-icon>
+            Start
+          </button>
+          <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='inProgress'" (click)="setState('resolve')">
+            <ion-icon name='checkmark' is-active="false"></ion-icon>
+            Resolve
+          </button>
+          <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'||issue.state=='inProgress'" (click)="setState('reject')">
+            <ion-icon name='close' is-active="false"></ion-icon>
+            Reject
+          </button>
+          <p *ngIf="issue.state=='rejected' || issue.state=='resolved'">Status: "{{issue.state}}"</p>
+      </ion-item>    
+    </form>
+  </ion-list>
 
-  <h2>Status actuel : {{issue.state}}</h2>
-  <form>
+  <!-- COMMENTAIRE LISTING -->
+  <div padding>
+    <h6>Commentaires</h6>
+    <ion-card *ngFor="let comment of commentsList">
+      <ion-card-content>
+        <h6>{{comment.createdAt}}</h6>
+        <p>{{comment.text}}</p>
+      </ion-card-content>    
+    </ion-card>
+  </div>
 
-    <ion-item>
-      <ion-label floating>Votre commentaire</ion-label>
-      <ion-input type='text' name='reason'
-                 #reason='ngModel' [(ngModel)]='actionRequest.reason' minlength='2' maxlength='50' required [ngModelOptions]="{standalone: true}"></ion-input>
-    </ion-item>
-
-    <span *ngIf="isStaff()">
-    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'" (click)="setState('start')">
-      <ion-icon name='build'></ion-icon>
-      Start
-    </button>
-    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='inProgress'" (click)="setState('resolve')">
-      <ion-icon name='checkmark' is-active="false"></ion-icon>
-      Resolve
-    </button>
-    <button type='submit' ion-button color="dark" round icon-start *ngIf="issue.state=='new'||issue.state=='inProgress'" (click)="setState('reject')">
-      <ion-icon name='close' is-active="false"></ion-icon>
-      Reject
-    </button>
-  </span>
-  </form>
-
-  <figure>
-    <figcaption>Commentaires</figcaption>
-    <ul>
-      <li *ngFor="let comment of commentsList" >{{comment.text}}</li>
-    </ul>
-  </figure>
-
-
-
-
-
-  <form (submit)='onSubmit($event)'>
-
-    <!-- Comment input -->
-    <ion-item>
-      <ion-label floating>Commentaire</ion-label>
-      <ion-input type='text' name='comment'
-                 #commentInput='ngModel' [(ngModel)]='commentRequest.text' required></ion-input>
-
-    </ion-item>
-
-    <!-- Error message displayed if the username is invalid -->
-    <ion-item *ngIf='commentInput.invalid && commentInput.dirty' no-lines>
-      <p ion-text color='danger'>Comment is required.</p>
-    </ion-item>
-
-    <div padding>
-
-      <!-- Submit button -->
-      <button type='submit' [disabled]='form.invalid' ion-button block outline>Ajouter mon commentaire</button>
-
-    </div>
-  </form>
+<!-- ADD COMMENTAIRE -->
+<form #dajneliaForm='ngForm' (submit)='onSubmit($event)'>
+  <!-- Comment input -->
+  <ion-item>
+    <ion-input type='text' name='comment' placeholder="Laissez un commentaire..."
+                #commentInput='ngModel' [(ngModel)]='commentRequest.text' required></ion-input>
+  </ion-item>
+  <!-- Error message displayed if the username is invalid -->
+  <ion-item *ngIf='commentInput.invalid && commentInput.dirty' no-lines>
+    <p ion-text color='danger'>Comment is required.</p>
+  </ion-item>
+  <div padding>
+    <!-- Submit button -->
+    <button type='submit' [disabled]='dajneliaForm.invalid' ion-button block outline>Ajouter mon commentaire</button>
+  </div>
+</form>
 
 </ion-content>
