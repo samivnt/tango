@@ -17,7 +17,97 @@
 
 
 <ion-content padding>
+
+
+
+  <!-- <button ion-button="" class="button button-md button-default button-default-md" name="all"><span class="button-inner">All</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="new"><span class="button-inner">New</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="inprogess"><span class="button-inner">InProgress</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="completed"><span class="button-inner">Completed</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="canceled"><span class="button-inner">Canceled</span></button>
+ -->
+  <div padding [(ngModel)]="status">
+    <ion-segment (ionChange)="segmentChanged(status)">
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="new">
+        New
+      </ion-segment-button>
+      <ion-segment-button value="inProgress">
+        In Progress
+      </ion-segment-button>
+      <ion-segment-button value="rejected">
+        Rejected
+      </ion-segment-button>
+      <ion-segment-button value="resolved">
+        Resolved
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="status" >
+    <ion-list *ngSwitchCase="'all'" >
+      <ion-item *ngFor='let issue of issuesList'>
+        <ion-thumbnail item-start>
+          <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+          <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+          {{ issue.description }}
+          <p>Status : {{issue.state}}</p>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'new'">
+      <ion-item *ngFor='let issue of issuesList'>
+        <ion-thumbnail item-start>
+          <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+          <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+          {{ issue.description }}
+          <p>Status : {{issue.state}}</p>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'inProgress'">
+      <ion-item *ngFor='let issue of issuesList'>
+        <ion-thumbnail item-start>
+          <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+          <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+          {{ issue.description }}
+          <p>Status : {{issue.state}}</p>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'rejected'">
+      <ion-item *ngFor='let issue of issuesList'>
+        <ion-thumbnail item-start>
+          <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+          <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+          {{ issue.description }}
+          <p>Status : {{issue.state}}</p>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'resolved'">
+      <ion-item *ngFor='let issue of issuesList'>
+        <ion-thumbnail item-start>
+          <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+          <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+          {{ issue.description }}
+          <p>Status : {{issue.state}}</p>
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>
+  </div>
+<!--
   <ul>
-    <li *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)"><img src="{{issue.imageUrl}}">{{ issue.description }}</li>
-  </ul>
+    <li *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+      <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+      <img *ngIf="!issue.imageUrl" src="../assets/imgs/no-img.png">
+      {{ issue.description }}
+    </li>
+  </ul>-->
 </ion-content>

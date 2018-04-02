@@ -35,6 +35,10 @@ export class IssueProvider {
     return this.http.get<Issue[]>(config.apiUrl + "/issues");
   }
 
+  getIssuesFilteredByStatus(status : String): Observable<Issue[]>{
+    return this.http.get<Issue[]>(config.apiUrl + "/issues?state=" + status);
+  }
+
 /*--- POST ---*/
   // Création d'une issue
   postIssue(issueRequest:IssueRequest): Observable<Issue>{
