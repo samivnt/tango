@@ -1,4 +1,2 @@
 A faire :
-- Il faut que je gère les tags pour les issues
-- fasse l'ajout d'une issue un peu plus jolie quand même
 - implémenter de la background localisation?
