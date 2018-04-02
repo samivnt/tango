@@ -6,4 +6,11 @@ page-issue-list {
     border-radius: 8px;
     width: 100%;
   }
+  .title_list{
+    border-bottom-color: white !important;
+    color: white !important;
+  }
+  .title_list:hover{
+    color: white;
+  }
 }

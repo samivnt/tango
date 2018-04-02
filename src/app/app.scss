@@ -33,10 +33,6 @@
   border-color: #e96525;
 }
 
-#plusButton{
-  color: #e96525;
-}
-
 .button-orange{
   color: white;
   background-color: #e96525;
@@ -45,4 +41,13 @@
 .button-orange:hover{
   color: white !important;
   background-color: #e96525 !important;
+}
+
+#plusButton{
+  color: #e96525;
+}
+
+.credits{
+  color: grey;
+  text-align: center;
 }

@@ -28,7 +28,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IssueProvider } from '../providers/issue/issue';
 import {UserProvider} from "../providers/user/user";
 import {CommentProvider} from "../providers/comment/comment";
-
+import { HeaderColor } from '@ionic-native/header-color';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,8 @@ import {CommentProvider} from "../providers/comment/comment";
     GeolocalisationProvider,
     IssueProvider,
     UserProvider,
-    CommentProvider
+    CommentProvider,
+    HeaderColor
   ]
 })
 export class AppModule {}
