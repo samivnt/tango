@@ -17,6 +17,8 @@ import {IssueDetailsPage} from "../issue-details/issue-details";
 })
 export class IssueListPage {
   issuesList : Issue[];
+  //pour que le segment sélectionné par défaut soit all
+  status = "all";
   constructor(public navCtrl: NavController, public navParams: NavParams, public issueProvider : IssueProvider) {
   }
 
