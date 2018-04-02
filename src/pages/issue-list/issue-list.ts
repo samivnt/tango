@@ -30,7 +30,6 @@ export class IssueListPage {
       console.log(err);
     });
     console.log('ionViewDidLoad IssueListPage');
-
   }
 
   segmentChanged($status){
