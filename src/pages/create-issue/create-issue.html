@@ -16,7 +16,23 @@
 </ion-header>
 
 <ion-content block>
-  <button ion-button (click)='providerTest()'>retrieve from the provider</button>
+
+  <!-- PHOTO -->
+  <div style="position: relative" class="centeredImageContainer">
+    <img *ngIf='!picture' class="centeredImage" src="http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder.png">
+    <img *ngIf='picture' class="centeredImage" [src]='picture.url' />
+  </div>
+  <!-- Bouton pour prendre Photo -->
+  <button ion-button (click)='takePicture()' full>
+      <ion-icon name="camera"></ion-icon>
+  </button>
+  <!--
+  <ion-item>
+    <ion-icon name="football" item-start large></ion-icon>
+    <h2>Museum of Football</h2>
+    <p>11 N. Way St, Madison, WI 53703</p>
+  </ion-item>
+  -->
 
   <!-- FORMULAIRE -->
   <form #issueCreationForm='ngForm' (submit)='createIssue(issueCreationForm)'>
@@ -48,18 +64,21 @@
     <!-- Issue type HREF -->
     <ion-item *ngIf="issueTypes">
       <ion-label floating>Issue Type HREF</ion-label>
-      <ion-select name="issueType" [(ngModel)]="issueRequest.issueTypeHref" #issueTypeInput='ngModel' required>
+      <ion-select interface="popover" name="issueType" [(ngModel)]="issueRequest.issueTypeHref" #issueTypeInput='ngModel' required>
         <ion-option *ngFor="let issueType of issueTypes" value="/api/issueTypes/{{issueType.id}}">{{issueType.name}}</ion-option>
       </ion-select>
     </ion-item>
 
     <!-- Tags --> 
     <ion-item>
-      <ion-label floating>Tags</ion-label>
-      <ion-input type='text'
-                 name='issueTags' [(ngModel)]='issueRequest.tags'>
-      </ion-input>
+      <ion-tags-input 
+      [(ngModel)]='issueRequest.tags' name = 'issueTags' [placeholder]="'+ tag'" 
+      [canBackspaceRemove]="true" [separatorStr]="','" [maxTags]="5"
+      [once]="'true'" [mode]="'ios'"
+      >
+      </ion-tags-input>
     </ion-item>
+    <!-- faire une ngif quand la variable possède 5 tags -->
 
     <!-- Submit button -->
     <div padding>
@@ -67,14 +86,7 @@
     </div>
 
   </form> <!-- Fin du formulaire d'upload issue -->
-   
-    <!-- Photo -->
-    <button ion-button (click)='takePicture()'>
-        <ion-icon name="camera"></ion-icon>
-      </button>
-      <!-- Affichage de la photo -->
-      <img *ngIf='picture' [src]='picture.url' />
-
+  
   <ion-item>
     <p *ngIf='descriptionInput.invalid && descriptionInput.dirty'>
         A description is required.
