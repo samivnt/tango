@@ -13,21 +13,8 @@
     <ion-title>IssueList</ion-title>
   </ion-navbar>
 
-</ion-header>
-
-
-<ion-content padding>
-
-
-
-  <!-- <button ion-button="" class="button button-md button-default button-default-md" name="all"><span class="button-inner">All</span></button>
-   <button ion-button="" class="button button-md button-default button-default-md" name="new"><span class="button-inner">New</span></button>
-   <button ion-button="" class="button button-md button-default button-default-md" name="inprogess"><span class="button-inner">InProgress</span></button>
-   <button ion-button="" class="button button-md button-default button-default-md" name="completed"><span class="button-inner">Completed</span></button>
-   <button ion-button="" class="button button-md button-default button-default-md" name="canceled"><span class="button-inner">Canceled</span></button>
- -->
-  <div padding [(ngModel)]="status">
-    <ion-segment (ionChange)="segmentChanged(status)">
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="status" (ionChange)="segmentChanged(status)">
       <ion-segment-button value="all">
         All
       </ion-segment-button>
@@ -44,8 +31,173 @@
         Resolved
       </ion-segment-button>
     </ion-segment>
-  </div>
+  </ion-toolbar>
 
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <button ion-button="" class="button button-md button-default button-default-md" name="all"><span class="button-inner">All</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="new"><span class="button-inner">New</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="inprogess"><span class="button-inner">InProgress</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="completed"><span class="button-inner">Completed</span></button>
+   <button ion-button="" class="button button-md button-default button-default-md" name="canceled"><span class="button-inner">Canceled</span></button>
+ -->
+ <div [ngSwitch]="status" >
+  
+  <div *ngSwitchCase="'all'">
+    <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+      <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+      <ion-card-content>
+          <p><ion-icon name="md-calendar"></ion-icon>{{ issue.createdAt }} - {{issue.state}}</p>
+          <p>{{ issue.description}}</p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small icon-start>
+            <!--
+            <ion-icon name="text"></ion-icon>
+            <div> {{ issue.numberComments }}</div>
+            -->
+            <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+            <div>Voir l'issue</div>
+          </button>
+        </ion-col>
+      <!-- METTRE LE PSEUDO DE L'AUTEUR
+        <ion-col text-right>
+          <button ion-button clear small icon-start>
+            <ion-icon name="ios-person"></ion-icon>
+            Marty McFly
+          </button>
+        </ion-col>
+      -->
+      </ion-row>
+    </ion-card>
+  </div> <!-- fin du switchCase -->
+
+  <div *ngSwitchCase="'new'">
+      <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+        <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+        <ion-card-content>
+            <p><ion-icon name="md-calendar"></ion-icon>{{ issue.createdAt }} - {{issue.state}}</p>
+            <p>{{ issue.description}}</p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small icon-start>
+              <!--
+              <ion-icon name="text"></ion-icon>
+              <div> {{ issue.numberComments }}</div>
+              -->
+              <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+              <div>Voir l'issue</div>
+            </button>
+          </ion-col>
+        <!-- METTRE LE PSEUDO DE L'AUTEUR
+          <ion-col text-right>
+            <button ion-button clear small icon-start>
+              <ion-icon name="ios-person"></ion-icon>
+              Marty McFly
+            </button>
+          </ion-col>
+        -->
+        </ion-row>
+      </ion-card>
+    </div> <!-- fin du switchCase -->
+
+    <div *ngSwitchCase="'inProgress'">
+      <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+        <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+        <ion-card-content>
+            <p><ion-icon name="md-calendar"></ion-icon>{{ issue.createdAt }} - {{issue.state}}</p>
+            <p>{{ issue.description}}</p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small icon-start>
+              <!--
+              <ion-icon name="text"></ion-icon>
+              <div> {{ issue.numberComments }}</div>
+              -->
+              <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+              <div>Voir l'issue</div>
+            </button>
+          </ion-col>
+        <!-- METTRE LE PSEUDO DE L'AUTEUR
+          <ion-col text-right>
+            <button ion-button clear small icon-start>
+              <ion-icon name="ios-person"></ion-icon>
+              Marty McFly
+            </button>
+          </ion-col>
+        -->
+        </ion-row>
+      </ion-card>
+    </div> <!-- fin du switchCase -->
+
+    <div *ngSwitchCase="'rejected'">
+      <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+        <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+        <ion-card-content>
+            <p><ion-icon name="md-calendar"></ion-icon>{{ issue.createdAt }} - {{issue.state}}</p>
+            <p>{{ issue.description}}</p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small icon-start>
+              <!--
+              <ion-icon name="text"></ion-icon>
+              <div> {{ issue.numberComments }}</div>
+              -->
+              <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+              <div>Voir l'issue</div>
+            </button>
+          </ion-col>
+        <!-- METTRE LE PSEUDO DE L'AUTEUR
+          <ion-col text-right>
+            <button ion-button clear small icon-start>
+              <ion-icon name="ios-person"></ion-icon>
+              Marty McFly
+            </button>
+          </ion-col>
+        -->
+        </ion-row>
+      </ion-card>
+    </div> <!-- fin du switchCase -->
+
+    <div *ngSwitchCase="'resolved'">
+      <ion-card *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
+        <img *ngIf="issue.imageUrl" src="{{issue.imageUrl}}">
+        <ion-card-content>
+            <p><ion-icon name="md-calendar"></ion-icon>{{ issue.createdAt }} - {{issue.state}}</p>
+            <p>{{ issue.description}}</p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small icon-start>
+              <!-- METTRE LE NOMBRE DE COMMENTAIRES
+              <ion-icon name="text"></ion-icon>
+              <div> {{ issue.numberComments }}</div>
+              -->
+              <ion-icon name="ios-arrow-dropright-circle-outline"></ion-icon>
+              <div>Voir l'issue</div>
+            </button>
+          </ion-col>
+        <!-- METTRE LE PSEUDO DE L'AUTEUR
+          <ion-col text-right>
+            <button ion-button clear small icon-start>
+              <ion-icon name="ios-person"></ion-icon>
+              Marty McFly
+            </button>
+          </ion-col>
+        -->
+        </ion-row>
+      </ion-card>
+    </div> <!-- fin du switchCase -->
+
+</div> <!-- fin du ngSwitch=status -->
+<!--
   <div [ngSwitch]="status" >
     <ion-list *ngSwitchCase="'all'" >
       <ion-item *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">
@@ -102,6 +254,7 @@
       </ion-item>
     </ion-list>
   </div>
+-->
 <!--
   <ul>
     <li *ngFor='let issue of issuesList' (click)="goToThisIssue(issue)">

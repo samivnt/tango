@@ -4,16 +4,12 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-content ion-fixed padding>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+  <ion-item>
+    <img class="logo" src="./assets/imgs/tango.png"/>
+  </ion-item>
 
-</ion-header>
-
-
-<ion-content padding>
   <form (submit)='onSubmit($event)'>
     <ion-list>
 
@@ -35,14 +31,13 @@
         <ion-input type='password' name='password'
                    #passwordInput='ngModel' [(ngModel)]='authRequest.password' required></ion-input>
       </ion-item>
+      <ion-item></ion-item>
 
       <!-- Error message displayed if the password is invalid -->
       <ion-item *ngIf='passwordInput.invalid && passwordInput.dirty' no-lines>
         <p ion-text color='danger'>Password is required.</p>
       </ion-item>
-
     </ion-list>
-
     <div padding>
 
       <!-- Submit button -->
@@ -54,6 +49,6 @@
     </div>
   </form>
   <div padding>
-      <button class="signup" ion-button block outline (click)='goToSignup()'>Sign up</button>
+      <button ion-button block outline (click)='goToSignup()'>Sign up</button>
   </div>
 </ion-content>

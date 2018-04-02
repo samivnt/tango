@@ -109,11 +109,11 @@ export class SignupPage {
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Welcome to '.concat(this.userRequest.name),
-      duration: 9000,
+      duration: 2500,
       position: 'top',
       showCloseButton: true,
-      closeButtonText: 'Merci !',
-      dismissOnPageChange: true,
+      closeButtonText: 'X',
+      dismissOnPageChange: false,
       cssClass: "toast",
     });
     toast.present();

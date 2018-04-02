@@ -21,6 +21,8 @@ import { IssueProvider } from '../../providers/issue/issue';
 import { IssueType } from '../../models/issue-type';
 import { User } from '../../models/user';
 
+import { Observable } from 'rxjs/Observable';
+
 /**
  * Generated class for the CreateIssuePage page.
  *
@@ -51,6 +53,10 @@ export class CreateIssuePage {
   @ViewChild(NgForm)
   form: NgForm;  
 
+  tags = [];
+  localite = 'an address';
+  address = '';
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private geolocation: Geolocation,
@@ -67,7 +73,7 @@ export class CreateIssuePage {
                     type: "Point"
                   },
                   description: '',
-                  tags: [],
+                  tags: this.tags,
                   imageUrl: '',
                   issueTypeHref: ''
                 };
@@ -110,6 +116,7 @@ export class CreateIssuePage {
 
     // Chercher les types d'issues sur l'API
     this.getIssueTypes();
+
   }
 
   createIssue(form: NgForm) {
@@ -120,7 +127,7 @@ export class CreateIssuePage {
 
       console.log(this.issueRequest); 
       console.log('juste avant upload');
-      this.uploadIssue();
+     // this.uploadIssue();
       console.log('juste après upload');
     } else {
       console.log('form non valide');
@@ -177,5 +184,5 @@ export class CreateIssuePage {
       console.warn('Could not get user authentification', err);
     });
   }
-  
+
 }

@@ -4,12 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { CreateIssuePage } from '../pages/create-issue/create-issue';
 import { IssueListPage } from '../pages/issue-list/issue-list';
 import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+
+import {IonTagsInputModule} from "ionic-tags-input";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,16 +24,16 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { Camera } from '@ionic-native/camera';
 import { PictureProvider } from '../providers/picture/picture';
 import { GeolocalisationProvider } from '../providers/geolocalisation/geolocalisation';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IssueProvider } from '../providers/issue/issue';
 import {UserProvider} from "../providers/user/user";
 import {CommentProvider} from "../providers/comment/comment";
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     CreateIssuePage,
     IssueListPage,
     IssueDetailsPage,
@@ -45,13 +46,14 @@ import {CommentProvider} from "../providers/comment/comment";
     HttpClientModule,
     IonicStorageModule.forRoot(),
     LeafletModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    IonTagsInputModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     CreateIssuePage,
     IssueListPage,
     IssueDetailsPage,
