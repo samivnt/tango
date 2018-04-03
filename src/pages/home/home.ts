@@ -19,7 +19,7 @@ export class HomePage {
   mapOptions: MapOptions;
   mapMarkers: Marker[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public issueProvider: IssueProvider, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public issueProvider: IssueProvider) {
     const tileLayerUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     const tileLayerOptions = { maxZoom: 18 };
     this.mapOptions = {
