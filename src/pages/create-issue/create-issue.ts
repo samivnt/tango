@@ -89,10 +89,10 @@ export class CreateIssuePage {
               }
 
 /*-------------- FONCTIONS --------------*/
-  ionViewDidLoad() {
+ionViewDidLoad() {
     console.log('page loaded');
     console.log('ionViewDidLoad CreateIssuePage');
-    
+
     // UserLastPosition mis à jour une fois la promesse du provider aboutie
     //userLastPosition = this.geoLocalisationService.retrieveActualGeolocalisation();
     
@@ -125,7 +125,6 @@ export class CreateIssuePage {
 
     // Chercher les types d'issues sur l'API
     this.getIssueTypes();
-
   }
 
   createIssue(form: NgForm) {

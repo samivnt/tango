@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NavController, NavParams } from 'ionic-angular';
+import { MenuController } from 'ionic-angular';
 
 import { AuthRequest } from '../../models/auth-request';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -36,8 +37,13 @@ export class LoginPage {
   @ViewChild(NgForm)
   form: NgForm;
 
-  constructor(private auth: AuthProvider, private navCtrl: NavController) {
+  constructor(private auth: AuthProvider, private navCtrl: NavController, public menuCtrl: MenuController) {
     this.authRequest = new AuthRequest();
+    this.noSwipe();
+  }
+
+  noSwipe(){
+    return this.menuCtrl.swipeEnable(false);
   }
 
   /**
