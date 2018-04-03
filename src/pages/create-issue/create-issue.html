@@ -19,7 +19,7 @@
 
   <!-- PHOTO -->
   <div style="position: relative" class="centeredImageContainer">
-    <img *ngIf='!picture' class="centeredImage" src="http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder.png">
+    <img *ngIf='!picture' class="centeredImage" src="../assets/imgs/noImage.png">
     <img *ngIf='picture' class="centeredImage" [src]='picture.url' />
   </div>
   <!-- Bouton pour prendre Photo -->
