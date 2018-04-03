@@ -27,12 +27,12 @@
     <div><p>{{issue.description}}</p></div>
   </div>
 
-  <!-- FOR STAFF -->
+  <!-- STAFF SECTION -->
   <ion-list *ngIf="isStaff()">
     <ion-list-header>Staff section</ion-list-header>
     <form>
-      <ion-item>
-        <ion-input type='text' name='reason' placeholder='Laissez votre commentaire...'
+      <ion-item *ngIf="issue.state=='new' || issue.state=='inProgress'">
+        <ion-input *ngIf="issue.state=='new' || issue.state=='inProgress'" type='text' name='reason' placeholder='Laissez votre commentaire...'
                   #reason='ngModel' [(ngModel)]='actionRequest.reason' minlength='2' maxlength='50' required [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
       <ion-item>
@@ -48,7 +48,7 @@
             <ion-icon name='close' is-active="false"></ion-icon>
             Reject
           </button>
-          <p *ngIf="issue.state=='rejected' || issue.state=='resolved'">Status: "{{issue.state}}"</p>
+          <p *ngIf="issue.state=='rejected' || issue.state=='resolved'">Issue status: "{{issue.state}}"</p>
       </ion-item>    
     </form>
   </ion-list>

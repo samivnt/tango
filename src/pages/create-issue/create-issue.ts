@@ -22,6 +22,7 @@ import { IssueType } from '../../models/issue-type';
 import { User } from '../../models/user';
 
 import { Observable } from 'rxjs/Observable';
+import { IssueTypeRequest } from '../../models/issue-type-request';
 
 /**
  * Generated class for the CreateIssuePage page.
@@ -44,11 +45,14 @@ export class CreateIssuePage {
   pictureData: string;
   picture: QimgImage;
   issueRequest: IssueRequest;
+  public issueTypeRequest: IssueTypeRequest;
   public issueTypes: IssueType[];
   public profil: User;
 
   description: string;
   descriptionForm: FormGroup;
+
+  user : User;
 
   @ViewChild(NgForm)
   form: NgForm;  
@@ -77,13 +81,18 @@ export class CreateIssuePage {
                   imageUrl: '',
                   issueTypeHref: ''
                 };
+                this.issueTypeRequest = {
+                  name: '',
+                  description: ''
+                };
+                this.setUser();
               }
 
 /*-------------- FONCTIONS --------------*/
-  ionViewDidLoad() {
+ionViewDidLoad() {
     console.log('page loaded');
     console.log('ionViewDidLoad CreateIssuePage');
-    
+
     // UserLastPosition mis à jour une fois la promesse du provider aboutie
     //userLastPosition = this.geoLocalisationService.retrieveActualGeolocalisation();
     
@@ -116,7 +125,6 @@ export class CreateIssuePage {
 
     // Chercher les types d'issues sur l'API
     this.getIssueTypes();
-
   }
 
   createIssue(form: NgForm) {
@@ -127,7 +135,7 @@ export class CreateIssuePage {
 
       console.log(this.issueRequest); 
       console.log('juste avant upload');
-     // this.uploadIssue();
+      this.uploadIssue();
       console.log('juste après upload');
     } else {
       console.log('form non valide');
@@ -171,7 +179,73 @@ export class CreateIssuePage {
   getIssueTypes(){
     this.issueProvider.getIssueTypes().subscribe(issueTypes => {
       this.issueTypes = issueTypes;
-      console.log(this.issueTypes);
+    });
+  }
+
+  // Update IssueTypes
+  updateIssueTypes(newIssueTypes){
+    this.issueTypes = newIssueTypes;
+    console.log(newIssueTypes);
+  }
+
+  // This being a staff option, we allowed us to reload the page after the add because losing a bit of ux isn't that much consequent.
+  addIssueType(){
+    console.log(this.issueTypeRequest);
+    this.issueProvider.postIssueType(this.issueTypeRequest).subscribe(issueType => {
+      console.log('issueType ajoutée');
+    });
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  }
+
+  // This being a staff option, we allowed us to reload the page after the update because losing a bit of ux isn't that much consequent.
+  // Showing the prompt to update de issue
+  showPrompt(issueType) {
+    let prompt = this.alertCtrl.create({
+      title: 'Update the IssueType',
+      subTitle: 'You\'re uptading issue type: ' + issueType.id,
+      inputs: [
+        {
+          name: 'name',
+          value: issueType.name,
+          type: 'text'
+        },
+        {
+          name: 'description',
+          value: issueType.description,
+          type: 'text'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved clicked');
+            console.log(data.name, data.description);
+            this.issueTypeRequest.name = data.name;
+            this.issueTypeRequest.description = data.description;
+            console.log(issueType.id);
+            this.issueProvider.updateIssueType(issueType.id, this.issueTypeRequest).subscribe(issueType =>{
+              console.log('done, u need to reload the page');
+              this.navCtrl.setRoot(this.navCtrl.getActive().component);
+            });
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  // This being a staff option, we allowed us to reload the page after the deletion because losing a bit of ux isn't that much consequent.
+  deleteIssueType(id){
+    this.issueProvider.deleteIssueTypes(id).subscribe(id =>{
+      console.log('issueType deleted');
+      this.navCtrl.setRoot(this.navCtrl.getActive().component);
     });
   }
 
@@ -183,6 +257,21 @@ export class CreateIssuePage {
     }, err => {
       console.warn('Could not get user authentification', err);
     });
+  }
+
+  setUser(){
+    this.auth.getUser().subscribe(user =>{
+      this.user = user;
+    })
+  }
+
+  isStaff() : boolean{
+    if(!this.auth.isAuthenticated()){
+      console.log("Pas authentifié !");
+      return false;
+    }else{
+      return (this.user.roles.indexOf("staff") > -1);
+    }
   }
 
 }

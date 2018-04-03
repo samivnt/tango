@@ -33,7 +33,39 @@
     <p>11 N. Way St, Madison, WI 53703</p>
   </ion-item>
   -->
-
+<!-- FOR STAFF -->
+<div *ngIf="isStaff()">
+  <ion-card>
+    <ion-list-header>Staff section</ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let issueType of issueTypes">
+        {{issueType.name}}
+        <button ion-button color="danger"  clear icon-right (click)='deleteIssueType(issueType.id)'>
+            <ion-icon name='trash' is-active="false" item-end></ion-icon>
+        </button>
+        <button ion-button color="danger"  clear icon-right (click)='showPrompt(issueType)'>
+            <ion-icon name='md-settings' is-active="false" item-end></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+          <form #addIssueTypeForm='ngForm'>
+              <ion-list>
+                <ion-item>
+                  <ion-input type='text' name='name' placeholder="IssueType name" [(ngModel)]='issueTypeRequest.name' required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input type='text' name='description' placeholder="Description" [(ngModel)]='issueTypeRequest.description' required></ion-input>
+                </ion-item>
+                <div padding>
+                  <button (click)='addIssueType(issueTypeRequest)' [disabled]='addIssueTypeForm.invalid' ion-button block outline>Add Issue Type</button>
+                </div>
+            </ion-list>
+          </form>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</div>
+  
   <!-- FORMULAIRE -->
   <form #issueCreationForm='ngForm' (submit)='createIssue(issueCreationForm)'>
     <!-- Description input -->
@@ -82,7 +114,10 @@
 
     <!-- Submit button -->
     <div padding>
-      <button type='submit' ion-button block outline [disabled]='issueCreationForm.invalid'>Enregistrer l'issue</button>
+      <button type='submit' ion-button block outline icon-left [disabled]='issueCreationForm.invalid'>
+        <ion-icon name="cloud-upload"></ion-icon>
+        Enregistrer l'issue
+      </button>
     </div>
 
   </form> <!-- Fin du formulaire d'upload issue -->
