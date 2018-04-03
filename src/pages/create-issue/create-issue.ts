@@ -70,7 +70,7 @@ export class CreateIssuePage {
               private geoLocalisationService: GeolocalisationProvider,
               private formBuilder: FormBuilder,
               private issueProvider: IssueProvider,
-              private auth: AuthProvider,) {
+              private auth: AuthProvider) {
                 this.issueRequest = {
                   location: {
                     coordinates: [0, 0],

@@ -42,8 +42,11 @@ export class LoginPage {
     this.noSwipe();
   }
 
-  noSwipe(){
-    return this.menuCtrl.swipeEnable(false);
+  noSwipe(){ // Enlever le swipe du menu
+    this.menuCtrl.swipeEnable(false);
+  }
+  goSwipe(){ // Remettre le swipe du menu
+    this.menuCtrl.swipeEnable(true);
   }
 
   /**
@@ -63,7 +66,9 @@ export class LoginPage {
     this.loginError = false;
 
     // Perform the authentication request to the API.
-    this.auth.logIn(this.authRequest).subscribe(undefined, err => {
+    this.auth.logIn(this.authRequest).subscribe(undefined => {
+      this.goSwipe(); // Réactivation du swipe si le login se fait correctement
+    }, err => {
       this.loginError = true;
       console.warn(`Authentication failed: ${err.message}`);
     });
