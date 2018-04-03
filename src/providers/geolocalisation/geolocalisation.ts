@@ -6,6 +6,10 @@ import { AlertController } from 'ionic-angular';
 
 /**
  * Service to retrieve user's geolocalisation.
+ * 
+ * Il n'y a actuellement pas d'implémentation dans l'application actuelle.
+ * Cependant, nous le gardons pour une mise à jour future de l'application.
+ * 
  */
 
 var userLastPosition;
