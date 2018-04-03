@@ -16,7 +16,7 @@
       <!-- Name input -->
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type='text' name='name'
+        <ion-input class="inputLogin" type='text' name='name'
                    #nameInput='ngModel' [(ngModel)]='authRequest.name' required></ion-input>
       </ion-item>
 
@@ -28,7 +28,7 @@
       <!-- Password input -->
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type='password' name='password'
+        <ion-input class="inputLogin" type='password' name='password'
                    #passwordInput='ngModel' [(ngModel)]='authRequest.password' required></ion-input>
       </ion-item>
       <ion-item></ion-item>

@@ -12,7 +12,6 @@ import { SignupPage } from '../pages/signup/signup';
 
 import {IonTagsInputModule} from "ionic-tags-input";
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';

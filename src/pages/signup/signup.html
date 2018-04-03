@@ -65,14 +65,14 @@
       <!-- Phone input -->
       <ion-item>
         <ion-label floating>Phone</ion-label>
-        <ion-input type='text' name='phone'
+        <ion-input type='number' name='phone'
                    #phoneInput='ngModel' [(ngModel)]='userRequest.phone' required></ion-input>
 
       </ion-item>
 
       <!-- Error message displayed if the username is invalid -->
       <ion-item *ngIf='phoneInput.invalid && phoneInput.dirty' no-lines>
-        <p ion-text color='danger'>Lastname is required.</p>
+        <p ion-text color='danger'>Phone is required.</p>
       </ion-item>
 
     </ion-list>

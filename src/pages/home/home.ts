@@ -19,7 +19,7 @@ export class HomePage {
   mapOptions: MapOptions;
   mapMarkers: Marker[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public issueProvider: IssueProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public issueProvider: IssueProvider, public storage: Storage) {
     const tileLayerUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     const tileLayerOptions = { maxZoom: 18 };
     this.mapOptions = {
@@ -63,15 +63,6 @@ export class HomePage {
   }
 
   generateMarker(issue: Issue){
-  /*  var myIcon = L.icon({
-    iconUrl: 'my-icon.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowUrl: 'my-icon-shadow.png',
-    shadowSize: [68, 95],
-    shadowAnchor: [22, 94]
-  });*/
     return marker([issue.location.coordinates[1],issue.location.coordinates[0]]).bindTooltip(issue.description).on('click',()=>{
       console.log(issue.id);
       this.navCtrl.push(IssueDetailsPage, issue);

@@ -38,13 +38,13 @@ export class MyApp {
          this.rootPage = HomePage;
        } else {
          this.rootPage = LoginPage;
-       }       
+       }
      });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Issues Map', component: HomePage },
-      { title: 'Issues list', component: IssueListPage },
+      { title: 'Issues List', component: IssueListPage },
       { title: 'Issue Creation', component: CreateIssuePage },/*
       { title: 'IssueDetails', component: IssueDetailsPage },
       { title: 'Signup', component: SignupPage }*/
