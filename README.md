@@ -72,7 +72,7 @@ Si l'utilisateur ne possède pas de compte, il peut se rendre sur la page Sign u
 <a name="signup"></a>
 ## 2. Sign up
 
-![Ecran Signup](resources/screen/signup.JPG)
+![Ecran Signup](resources/screen/signupPage.JPG)
 
 Afin de créer un compte, l'utilisateur doit saisir ses informations personnels ainsi qu'un nom d'utilisateur et un mot de passe. La création de l'utilisateur est possible seulement une fois tous les champs remplis.
 
