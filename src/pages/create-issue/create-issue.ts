@@ -68,7 +68,7 @@ export class CreateIssuePage {
               private auth: AuthProvider) {
                 this.issueRequest = {
                   location: {
-                    coordinates: [0, 0],
+                    coordinates: [null,null],
                     type: "Point"
                   },
                   description: '',
