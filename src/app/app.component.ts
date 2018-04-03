@@ -33,9 +33,9 @@ export class MyApp {
 
       this.auth.isAuthenticated().subscribe(authenticated => {
        if (authenticated) {
-         this.rootPage = HomePage;
+        this.rootPage = HomePage;
        } else {
-         this.rootPage = LoginPage;
+        this.rootPage = LoginPage;
        }
      });
 
