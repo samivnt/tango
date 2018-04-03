@@ -6,7 +6,6 @@
 /**
  * Imports
  */
-import { User } from "./user";
 import { IssueType } from "./issue-Type";
 
 export class Issue {
@@ -27,22 +26,3 @@ export class Issue {
     tags: [string];
     updatedAt: Date;
 }
-
-/*
-            creator: User;
-            issueType: issueType;
-
-
-
-import { IssueAction } from "./issue-action";
-import { IssueType, IssueType } from "./issue-type";
-
-
-export class Issue {
-            
-    actions: IssueAction[];
-    assignee: User;
-
-}
-
-*/

@@ -7,12 +7,10 @@ import { MenuController } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { CreateIssuePage } from '../pages/create-issue/create-issue';
 import { IssueListPage } from '../pages/issue-list/issue-list';
-import { IssueDetailsPage } from '../pages/issue-details/issue-details';
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpClient } from '@angular/common/http';
 import { config } from '../app/config';
-import { SignupPage } from '../pages/signup/signup';
 
 @Component({
   templateUrl: 'app.html'

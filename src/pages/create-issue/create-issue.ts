@@ -2,26 +2,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Camera, CameraOptions  } from '@ionic-native/camera';
 import { NgForm } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { QimgImage } from '../../models/qimg-image';
 import { PictureProvider } from '../../providers/picture/picture';
 
 import { GeolocalisationProvider } from '../../providers/geolocalisation/geolocalisation';
-import { AuthRequest } from '../../models/auth-request';
 import { AuthProvider } from '../../providers/auth/auth';
 
 import { AlertController } from 'ionic-angular';
-import { VariableAst } from '@angular/compiler';
 
 import { IssueRequest } from '../../models/issue-request';
 import { IssueProvider } from '../../providers/issue/issue';
 import { IssueType } from '../../models/issue-type';
 import { User } from '../../models/user';
 
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 import { IssueTypeRequest } from '../../models/issue-type-request';
 
 /**
@@ -64,11 +61,9 @@ export class CreateIssuePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private geolocation: Geolocation,
-              private camera: Camera,
               private pictureService: PictureProvider,
               private alertCtrl: AlertController,
               private geoLocalisationService: GeolocalisationProvider,
-              private formBuilder: FormBuilder,
               private issueProvider: IssueProvider,
               private auth: AuthProvider) {
                 this.issueRequest = {

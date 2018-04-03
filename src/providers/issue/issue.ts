@@ -1,14 +1,11 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 import { config } from '../../app/config';
 import { Issue } from '../../models/issue';
-//import { Comment } from '../../models/comment';
-//import { CommentRequest } from '../../models/comment-request';
 import { IssueRequest } from '../../models/issue-request';
 import { IssueType } from '../../models/issue-type';
-import { IssueListPage } from '../../pages/issue-list/issue-list';
 import {ActionRequest} from "../../models/action-request";
 import { IssueTypeRequest } from "../../models/issue-type-request";
 

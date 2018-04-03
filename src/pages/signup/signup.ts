@@ -1,21 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavParams} from 'ionic-angular';
 import {NgForm} from '@angular/forms';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-
 
 import {AuthRequest} from '../../models/auth-request';
 import {AuthProvider} from '../../providers/auth/auth';
-import {HomePage} from '../home/home';
-import {LoginPage} from "../login/login";
 
 import {UserRequest} from "../../models/user-request";
 import {UserProvider} from "../../providers/user/user";
 
 import { ToastController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { config } from '../../app/config';
-import {User} from "../../models/user";
+import { User } from "../../models/user";
 
 /**
  * Generated class for the SignupPage page.
@@ -52,7 +46,6 @@ export class SignupPage {
 
   constructor(
       private auth: AuthProvider,
-      private navCtrl: NavController,
       public navParams: NavParams,
       public userProvider : UserProvider,
       public toastCtrl: ToastController
