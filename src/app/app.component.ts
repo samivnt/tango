@@ -35,16 +35,16 @@ export class MyApp {
 
       this.auth.isAuthenticated().subscribe(authenticated => {
        if (authenticated) {
-        this.rootPage = HomePage;
+         this.rootPage = HomePage;
        } else {
-        this.rootPage = LoginPage;
-       }       
+         this.rootPage = LoginPage;
+       }
      });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Issues Map', component: HomePage },
-      { title: 'Issues list', component: IssueListPage },
+      { title: 'Issues List', component: IssueListPage },
       { title: 'Issue Creation', component: CreateIssuePage },/*
       { title: 'IssueDetails', component: IssueDetailsPage },
       { title: 'Signup', component: SignupPage }*/
