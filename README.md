@@ -5,6 +5,48 @@
 Bienvenue sur le repository de tango !
 tango est une application mobile permettant aux citoyens de signaler des problèmes/incivilités aux établisssements publics de leurs villes afin qu'ils soient pris en charge.
 
+## Installation
+
+Cloner le projet :
+
+```bash
+https://github.com/samivnt/tango.git
+cd tango
+npm install
+cordova prepare
+```
+
+Ajout du fichier de configuration :
+
+```bash
+cp src/app/config.sample.ts src/app/config.ts
+```
+
+Entrer les informations dans `src/app/config.ts`.
+
+## Utilisation
+
+Lancer l'application sur un navigateur :
+
+```bash
+cd tango
+ionic serve
+```
+
+Lancer l'application sur un smartphone Android :
+
+```bash
+cd tango
+ionic cordova run android
+```
+
+Lancer l'application sur un smartphone en "streaming" :
+
+```bash
+cd tango
+ionic serve -c
+```
+
 ## Index
 
 1. [Login](#login)
@@ -100,5 +142,3 @@ L'uilisateur, avec le rôle de staff, peut mettre à jour le statut d'un problè
 L'uilisateur, avec le rôle de staff, peut créer, modifier ou supprimer des types de problèmes. Cette fonctionnalité est accessible sur la page Issue Creation et seul les types non-utilisé peuvent être supprimer.
 
 <a href="#top">Retour en haut de la page</a>
-
-### Installing
