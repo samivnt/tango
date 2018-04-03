@@ -20,6 +20,7 @@ import { User } from '../../models/user';
 
 //import { Observable } from 'rxjs/Observable';
 import { IssueTypeRequest } from '../../models/issue-type-request';
+import { IssueListPage } from '../issue-list/issue-list';
 
 /**
  * Generated class for the CreateIssuePage page.
@@ -76,10 +77,12 @@ export class CreateIssuePage {
                   imageUrl: '',
                   issueTypeHref: ''
                 };
+
                 this.issueTypeRequest = {
                   name: '',
                   description: ''
                 };
+
                 this.setUser();
               }
 
@@ -134,6 +137,24 @@ ionViewDidLoad() {
   uploadIssue(){
     this.issueProvider.postIssue(this.issueRequest).subscribe(issue => {
       console.log('issue ajoutée');
+      // Reset des champs afin que le back ramène sur un formulaire vide
+      // Ne reset pas la géolocalisation car l'utilisateur n'a que très peu de chance d'avoir bougé de manière significative depuis la création de son issue
+      // De plus, il est très très peu probable que l'utilisateur upload une issue dans l'instant à quelques mètres (donc nouvelles coordonnées) de la précédente.
+      this.tags = [];
+      this.picture = null;
+      this.issueRequest = {
+        location: {
+          coordinates: [userLastPosition.longitude,
+            userLastPosition.latitude],
+          type: "Point"
+        },
+        description: '',
+        tags: this.tags,
+        imageUrl: '',
+        issueTypeHref: ''
+      };
+      this.navCtrl.push(IssueListPage);
+      //this.navCtrl.setRoot(IssueListPage);
     });
   }
 
@@ -146,22 +167,6 @@ ionViewDidLoad() {
       console.warn('Could not take picture', err);
     });
   }
-
-  // Récupérer la position enregistrée du user
-  getUserPosition(){
-    let alert = this.alertCtrl.create({
-      title: 'Vous avez été géolocalisé.',
-      subTitle: `${userLastPosition.longitude}, ${userLastPosition.latitude}`,
-      buttons: ['oooook']
-    });
-    alert.present();
-    return userLastPosition;
-  }
-
-  // FAIRE LA FONCTION POUR METTRE A JOUR LA POSITION GPS!!!
-  miseAJourPosition() {
-    console.log(this.geoLocalisationService.retrieveActualCoordinates());
-  } 
 
   // Recupéraiton des types d'issues dans l'API
   getIssueTypes(){

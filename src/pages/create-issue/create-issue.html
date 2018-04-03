@@ -88,14 +88,14 @@
       <!-- Longitude input -->    
       <ion-item>
         <ion-label floating>Longitude</ion-label>
-        <ion-input type='number' required [readonly]=true
+        <ion-input type='number' required
                   name='longitude' [(ngModel)]='issueRequest.location.coordinates[0]'>
         </ion-input>
       </ion-item>
       <!-- Latitude input -->
       <ion-item>
         <ion-label floating>Latitude</ion-label>
-        <ion-input type='number' required [readonly]=true
+        <ion-input type='number' required
                   name='latitude' [(ngModel)]='issueRequest.location.coordinates[1]'>
         </ion-input>
       </ion-item>
