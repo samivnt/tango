@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 import { QimgImage } from '../../models/qimg-image';
 import { PictureProvider } from '../../providers/picture/picture';
 
-import { GeolocalisationProvider } from '../../providers/geolocalisation/geolocalisation';
+//import { GeolocalisationProvider } from '../../providers/geolocalisation/geolocalisation';
 import { AuthProvider } from '../../providers/auth/auth';
 
 import { AlertController } from 'ionic-angular';
@@ -31,7 +31,6 @@ import { IssueListPage } from '../issue-list/issue-list';
 
 /*---- Declarations Variables ----*/ 
 var userLastPosition;
-var coordonnees = new Array();
 
 @Component({
   selector: 'page-create-issue',
@@ -64,7 +63,7 @@ export class CreateIssuePage {
               private geolocation: Geolocation,
               private pictureService: PictureProvider,
               private alertCtrl: AlertController,
-              private geoLocalisationService: GeolocalisationProvider,
+              //private geoLocalisationService: GeolocalisationProvider,
               private issueProvider: IssueProvider,
               private auth: AuthProvider) {
                 this.issueRequest = {
