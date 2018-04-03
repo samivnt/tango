@@ -10,6 +10,7 @@ import { IssueRequest } from '../../models/issue-request';
 import { IssueType } from '../../models/issue-type';
 import { IssueListPage } from '../../pages/issue-list/issue-list';
 import {ActionRequest} from "../../models/action-request";
+import { IssueTypeRequest } from "../../models/issue-type-request";
 
 
 /*
@@ -46,8 +47,24 @@ export class IssueProvider {
     return this.http.post<Issue>(config.apiUrl + '/issues', issueRequest).pipe();
   }
 
-  /* --- SET ---*/
+  postIssueType(issueTypeRequest:IssueTypeRequest): Observable<IssueType>{
+    return this.http.post<IssueType>(config.apiUrl + "/issueTypes", issueTypeRequest);
+  }
+
+/*--- UPDATE ---*/
+  updateIssueType(issueTypeId:string, issueTypeRequest:IssueTypeRequest): Observable<IssueType>{
+    return this.http.patch<IssueType>(config.apiUrl + "/issueTypes/" + issueTypeId, issueTypeRequest);
+  }
+
+/* --- SET ---*/
   setState(action : ActionRequest, issueId : String) : Observable<Issue>{
     return this.http.post<Issue>(config.apiUrl + "/issues/" + issueId + "/actions", action).pipe();
   }
+
+/*--- DELETE ---*/
+  deleteIssueTypes(issueTypeId:string): Observable<IssueType>{
+    console.log(issueTypeId);
+    return this.http.delete<IssueType>(config.apiUrl + "/issueTypes/" + issueTypeId);
+  }
+
 }
