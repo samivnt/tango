@@ -53,16 +53,14 @@ export class IssueDetailsPage {
       console.log("Pas authentifié !");
       return false;
     }else{
-      console.log('caca');
       return (this.user.roles.indexOf("staff") > -1);
     }
   }
 
   ionViewDidLoad() {
     this.commentProvider.getComments(this.issue.id).subscribe(comments =>{
-      console.log(comments);
+      console.log('Commentaires: ', comments);
       this.commentsList = comments;
-      console.log(comments[0]);
     }, err => {
       console.log(err);
     });
