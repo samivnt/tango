@@ -64,6 +64,7 @@ export class IssueProvider {
 /*--- DELETE ---*/
   deleteIssueTypes(issueTypeId:string): Observable<IssueType>{
     console.log(issueTypeId);
+    
     return this.http.delete<IssueType>(config.apiUrl + "/issueTypes/" + issueTypeId);
   }
 

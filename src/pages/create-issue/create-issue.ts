@@ -189,6 +189,7 @@ export class CreateIssuePage {
     console.log(newIssueTypes);
   }
 
+  // This being a staff option, we allowed us to reload the page after the add because losing a bit of ux isn't that much consequent.
   addIssueType(){
     console.log(this.issueTypeRequest);
     this.issueProvider.postIssueType(this.issueTypeRequest).subscribe(issueType => {
@@ -197,6 +198,7 @@ export class CreateIssuePage {
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
 
+  // This being a staff option, we allowed us to reload the page after the update because losing a bit of ux isn't that much consequent.
   // Showing the prompt to update de issue
   showPrompt(issueType) {
     let prompt = this.alertCtrl.create({
@@ -240,6 +242,7 @@ export class CreateIssuePage {
     prompt.present();
   }
 
+  // This being a staff option, we allowed us to reload the page after the deletion because losing a bit of ux isn't that much consequent.
   deleteIssueType(id){
     this.issueProvider.deleteIssueTypes(id).subscribe(id =>{
       console.log('issueType deleted');
