@@ -58,7 +58,7 @@ En cliquant sur le bouton ![Bouton de menu](resources/screen/menu-button.JPG), l
 <a name="creerIssue"></a>
 ## 5. Signaler un problème
 
-![Ecran Cration](resources/screen/issueCreation.JPG)
+![Ecran Creation](resources/screen/issueCreation.JPG)
 
 Afin de signaler un problème, l'utilisateur est invité à entrer quelques informations concernant le problème. Un problème a besoin d'une description, une position et un type de problème. En plus, l'utilisateur a la possibilité d'ajouter une photo ainsi que des tags.
 L'utilisateur est automatiquement géolocalisé afin de connaître l'emplacement du problème. Cependant, les champs restent éditables afin que l'utilisateur puisse bénéficer d'une totale liberté.  
