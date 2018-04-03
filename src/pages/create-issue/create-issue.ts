@@ -97,13 +97,6 @@ ionViewDidLoad() {
     geolocationPromise.then(position => {
       userLastPosition = position.coords;
       console.log(`User is at ${userLastPosition.longitude}, ${userLastPosition.latitude}`);
-      let alert = this.alertCtrl.create({
-          title: 'Vous avez été géolocalisé.',
-          subTitle: `${userLastPosition.longitude}, ${userLastPosition.latitude}`,
-          buttons: ['Okay']
-      });
-      alert.present();
-
       // Ajouter les coordonnées à l'issue
       this.issueRequest.location = {
         "type": "Point",
